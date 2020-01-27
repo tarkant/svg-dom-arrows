@@ -5,7 +5,8 @@
   "keywords": [
     "arrow",
     "arrows",
-    "svg"
+    "svg",
+    "DOM"
   ],
   "main": "dist/main.js",
   "scripts": {
@@ -21,7 +22,7 @@
   "author": "tarkant",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tarkant/svg-dom-arrows"
+    "url": "https://github.com/tarkant/svg-dom-arrows/issues"
   },
   "husky": {
     "hooks": {
