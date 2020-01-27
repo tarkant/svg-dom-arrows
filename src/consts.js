@@ -14,4 +14,4 @@ export const DIRECTION = {
 export const SHAPES = {
   NORMAL: 'normal',
   STRAIGHT_CURVED: 'straight-curved',
-}
+};

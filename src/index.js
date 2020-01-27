@@ -3,7 +3,9 @@ import ends from './arrow/ends';
 import path from './arrow/path';
 import observer from './observer/observer';
 
-const arrowCreate = ({ className = 'arrow', from, to, shapeApparence }) => {
+const arrowCreate = ({
+  className = 'arrow', from, to, shapeApparence,
+}) => {
   const arrow = path(ends(from), ends(to), shapeApparence);
 
   const arrowRef = Element.createRef();

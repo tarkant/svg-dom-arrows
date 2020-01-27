@@ -43,9 +43,9 @@ export const smoothCurvesPathSVG = (from, to) => {
 
   const middleY = (from.y - to.y) / 2;
 
-  const root = `m ${to.x} ,${to.y} c ${middleX},0`
+  const root = `m ${to.x} ,${to.y} c ${middleX},0`;
 
-  const center = ` ${middleX},0 ${middleX},${middleY} 0,${middleY}`
+  const center = ` ${middleX},0 ${middleX},${middleY} 0,${middleY}`;
 
   const end = ` 0,${middleY} ${middleX} ,${middleY}`;
   return root + center + end;
