@@ -10,3 +10,8 @@ export const DIRECTION = {
   BOTTOM_RIGHT: 'bottom-right',
   LEFT: 'left',
 };
+
+export const SHAPES = {
+  NORMAL: 'normal',
+  STRAIGHT_CURVED: 'straight-curved',
+};

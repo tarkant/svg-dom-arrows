@@ -1,6 +1,6 @@
 import flatten from 'lodash/flatten';
 
-import { ARROW_HEAD_SIZE } from '../consts';
+import { ARROW_HEAD_SIZE, SHAPES } from '../consts';
 import { pointToArray, pointBezier } from './point';
 import { headBezierAngle, headBezierXY } from './head';
 
@@ -36,6 +36,19 @@ export const pathListSVG = (points) => {
   list.push(pointToArray(points[3]));
 
   return flatten(list).join(' ').replace(/ ,/g, ',');
+};
+
+export const smoothCurvesPathSVG = (from, to) => {
+  const middleX = (from.x - to.x) / 2;
+
+  const middleY = (from.y - to.y) / 2;
+
+  const root = `m ${to.x} ,${to.y} c ${middleX},0`;
+
+  const center = ` ${middleX},0 ${middleX},${middleY} 0,${middleY}`;
+
+  const end = ` 0,${middleY} ${middleX} ,${middleY}`;
+  return root + center + end;
 };
 
 const pathViewportFromAndTo = ({ from, to, pathXYPosition }) => ({
@@ -95,7 +108,7 @@ const pathOffset = (points, pathXYPosition) => {
   };
 };
 
-const path = (from, to) => {
+const path = (from, to, shapeApparence) => {
   const pathXYPosition = startPosition(from, to);
   const points = pathListBezier({
     from: pointAbsolute(from, pathXYPosition),
@@ -108,13 +121,20 @@ const path = (from, to) => {
     y: Math.max(prev.y, curr.y),
   }));
 
+  let svgPath = '';
+  if (shapeApparence === SHAPES.STRAIGHT_CURVED) {
+    svgPath = smoothCurvesPathSVG(points[0], points[3]);
+  } else {
+    svgPath = pathListSVG(points);
+  }
+
   return {
     offset: pathOffset(points, pathXYPosition),
     size: {
       width: size.x + ARROW_HEAD_SIZE * 2,
       height: size.y + ARROW_HEAD_SIZE * 2,
     },
-    points: pathListSVG(points),
+    points: svgPath,
     head: {
       ...headBezierAngle(1, points),
       ...headBezierXY(1, points),

@@ -1,23 +1,30 @@
-window.addEventListener('load', function(){
-  const arrowProps = {
-    className: 'arrow',
-    from: {
-      point: {
-        x: 50,
-        y: 100,
+window.addEventListener('load', function () {
+  const arrowProps = JSON.parse(`{
+    "className": "arrow",
+    "shapeApparence": "straight-curved",
+    "from": {
+      "point": {
+        "x": 500,
+        "y": 100
       },
-      direction: 'top',
-      translation: [-0.5, -1],
+      "direction": "right",
+      "translation": [
+        -0.5,
+        -1
+      ]
     },
-    to: {
-      point: {
-        x: 750,
-        y: 350,
+    "to": {
+      "point": {
+        "x": 550,
+        "y": 200
       },
-      direction: 'top',
-      translation: [0.9, 1],
-    },
-  }
+      "direction": "left",
+      "translation": [
+        0.9,
+        1
+      ]
+    }
+  }`);
 
   const nodes = {
     from: document.getElementById('from'),
@@ -28,8 +35,8 @@ window.addEventListener('load', function(){
   const button = document.querySelector('button')
 
   let arrow = null
-  
-  function update(){
+
+  function update() {
     const arrowProps = JSON.parse(textarea.value)
     arrowProps.from.node = nodes.from
     arrowProps.to.node = nodes.to

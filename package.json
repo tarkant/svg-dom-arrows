@@ -1,11 +1,12 @@
 {
-  "name": "arrows-svg",
-  "version": "1.0.5",
-  "description": "SVG arrow between two HTML elements",
+  "name": "svg-dom-arrows",
+  "version": "1.0.0",
+  "description": "Draw an SVG arrow between two DOM elements",
   "keywords": [
     "arrow",
     "arrows",
-    "svg"
+    "svg",
+    "DOM"
   ],
   "main": "dist/main.js",
   "scripts": {
@@ -16,19 +17,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sasza2/arrows.git"
+    "url": "git+https://github.com/tarkant/svg-dom-arrows.git"
   },
-  "author": "",
+  "author": "tarkant",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sasza2/arrows/issues"
+    "url": "https://github.com/tarkant/svg-dom-arrows/issues"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run test"
     }
   },
-  "homepage": "https://github.com/sasza2/arrows#readme",
+  "homepage": "https://github.com/tarkant/svg-dom-arrows#readme",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
