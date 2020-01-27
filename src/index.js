@@ -3,8 +3,8 @@ import ends from './arrow/ends';
 import path from './arrow/path';
 import observer from './observer/observer';
 
-const arrowCreate = ({ className = 'arrow', from, to }) => {
-  const arrow = path(ends(from), ends(to));
+const arrowCreate = ({ className = 'arrow', from, to, shapeApparence }) => {
+  const arrow = path(ends(from), ends(to), shapeApparence);
 
   const arrowRef = Element.createRef();
   const pathRef = Element.createRef();
@@ -32,7 +32,7 @@ const arrowCreate = ({ className = 'arrow', from, to }) => {
 
   const watcher = observer(from, to);
   watcher.observe(() => {
-    const nextArrow = path(ends(from), ends(to));
+    const nextArrow = path(ends(from), ends(to), shapeApparence);
     arrowRef.current.style.top = `${nextArrow.offset.y}px`;
     arrowRef.current.style.left = `${nextArrow.offset.x}px`;
     arrowRef.current.style.width = `${nextArrow.size.width}px`;
@@ -55,4 +55,4 @@ const arrowCreate = ({ className = 'arrow', from, to }) => {
 if (window) window.arrowCreate = arrowCreate;
 
 export default arrowCreate;
-export { DIRECTION } from './consts';
+export { DIRECTION, SHAPES } from './consts';
