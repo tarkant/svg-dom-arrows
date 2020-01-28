@@ -2,7 +2,7 @@ import flatten from 'lodash/flatten';
 
 import { ARROW_HEAD_SIZE, SHAPES } from '../consts';
 import { pointToArray, pointBezier } from './point';
-import { headBezierAngle, headBezierXY } from './head';
+import { headBezierAngle, headBezierXY, headBezierAngleSmooth } from './head';
 
 export const pointSubstract = (point, subtrahend) => ({
   ...point,
@@ -121,11 +121,14 @@ const path = (from, to, shapeApparence) => {
     y: Math.max(prev.y, curr.y),
   }));
 
+  let angle = { };
   let svgPath = '';
   if (shapeApparence === SHAPES.STRAIGHT_CURVED) {
     svgPath = smoothCurvesPathSVG(points[0], points[3]);
+    angle = headBezierAngleSmooth(1, points);
   } else {
     svgPath = pathListSVG(points);
+    angle = headBezierAngle(1, points);
   }
 
   return {
@@ -136,7 +139,7 @@ const path = (from, to, shapeApparence) => {
     },
     points: svgPath,
     head: {
-      ...headBezierAngle(1, points),
+      ...angle,
       ...headBezierXY(1, points),
     },
   };
