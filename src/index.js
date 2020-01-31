@@ -16,19 +16,15 @@ const arrowCreate = ({
     <svg ref={arrowRef} className={className} style={{
       top: arrow.offset.y, left: arrow.offset.x, position: 'absolute',
     }} width={arrow.size.width} height={arrow.size.height}>
-      <path ref={pathRef} className={`${className}__path`} d={arrow.points} />
-      <svg
-        ref={headRef}
-        className={`${className}__head`}
-        x={arrow.head.x - 10}
-        y={arrow.head.y - 10}
-        width="20"
-        height="20"
-        transform={`rotate(${(arrow.head.degree)}, ${arrow.head.x}, ${arrow.head.y})`}
-      >
-        <line x1="0" y1="0" x2="10" y2="10" />
-        <line x1="10" y1="10" x2="0" y2="20" />
-      </svg>
+      <defs
+        id="defs2">
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+            markerWidth="12" markerHeight="12"
+            orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>
+      </defs>
+      <path ref={pathRef} className={`${className}__path`} d={arrow.points} marker-end="url(#arrow)" marker-start="url(#arrow)"/>
     </svg>
   );
 

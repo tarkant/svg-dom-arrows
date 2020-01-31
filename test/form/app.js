@@ -15,10 +15,10 @@ window.addEventListener('load', function () {
     },
     "to": {
       "point": {
-        "x": 550,
-        "y": 200
+        "x": 450,
+        "y": 50
       },
-      "direction": "left",
+      "direction": "bottom-right",
       "translation": [
         0.9,
         1
