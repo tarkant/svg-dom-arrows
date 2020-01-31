@@ -1,5 +1,3 @@
-import isFunction from 'lodash/isFunction';
-
 import { DIRECTION } from '../consts';
 
 const endNode = (point) => (isFunction(point.node)
@@ -55,9 +53,11 @@ const endXY = (point) => {
   }
 };
 
-const ends = (point) => ({
+export const ends = (point) => ({
   ...point,
   ...endXY(point),
 });
 
-export default ends;
+function isFunction(functionToCheck) {
+  return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+ }

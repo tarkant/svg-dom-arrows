@@ -9,7 +9,7 @@ const comparePositions = (prev, node) => {
 };
 
 const nextPositions = ({ prevs, from, to }) => {
-  const current = {};
+  const current = {} as any;
 
   current.from = comparePositions(prevs.from, from.node);
   current.to = comparePositions(prevs.to, to.node);
