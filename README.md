@@ -1,17 +1,22 @@
-# arrows-svg
-Library for creating SVG arrow between two HTML elements. Positions of elements are observed, so when they change arrow will rerender.
+# ⚠️IMPORTANT ⚠️
+
+This project is still WIP, please avoid using it as for now you might encounter future breaking changes. You have been warned.
+
+# 🏹 svg-dom-arrows
+
+A tool to draw an SVG arrow between two DOM elements, this project is forked from [arrows-svg](https://github.com/sasza2/arrows) with some tweaks and customizations possibilities.
 
 ![Arrow](docs/arrow-1.png?raw=true "Arrow example")
 
 # Installation
 
 ```sh
-npm install arrows-svg
+npm install svg-dom-arrows
 ```
 # How to use it
 
 ```js
-import arrowCreate, { DIRECTION } from 'arrows'
+import arrowCreate, { DIRECTION } from 'svg-dom-arrows'
 
 const arrow = arrowCreate({
   className: 'arrow',
