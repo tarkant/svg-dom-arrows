@@ -1,6 +1,5 @@
 import { ends } from './arrow/ends';
 import { path } from './arrow/path';
-import observer from './observer/observer';
 
 const arrowCreate = ({
   className = 'arrow', from, to, shapeApparence,
@@ -16,6 +15,7 @@ const arrowCreate = ({
     return template.content.childNodes;
   }
 
+  console.warn(from)
   const arrow = path(ends(from), ends(to), shapeApparence);
 
   const node = htmlToElements(`<svg class="${className}"
@@ -32,7 +32,7 @@ const arrowCreate = ({
       <path class="${className}__path" d="${arrow.points}" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
     </svg>`)[0];
 
-  const watcher = observer(from, to);
+  /* const watcher = observer(from, to);
   watcher.observe(() => {
     const nextArrow = path(ends(from), ends(to), shapeApparence);
     ((node as SVGAElement).querySelector(`.${className}`) as SVGAElement).style.top = `${nextArrow.offset.y}px`;
@@ -42,11 +42,11 @@ const arrowCreate = ({
 
     ((node as SVGAElement).querySelector(`.${className}__path`) as SVGAElement).setAttribute('d', nextArrow.points);
 
-  });
+  }); */
 
   return {
     node,
-    timer: watcher.timer,
+    timer: 0,
   };
 };
 
