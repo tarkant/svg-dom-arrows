@@ -9,7 +9,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
     libraryTarget: 'umd',
+    library: 'SvgDomArrows',
     umdNamedDefine: true,
+    globalObject: 'this',
   },
   module: {
     rules: [
@@ -21,5 +23,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000,
+  },
 };

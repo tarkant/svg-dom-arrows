@@ -16,9 +16,9 @@ npm install svg-dom-arrows
 # How to use it
 
 ```js
-import arrowCreate, { DIRECTION } from 'svg-dom-arrows'
+import { Arrow, DIRECTION } from 'svg-dom-arrows'
 
-const arrow = arrowCreate({
+const arrow = new Arrow({
   className: 'arrow',
   from: {
     direction: DIRECTION.TOP,
@@ -32,12 +32,7 @@ const arrow = arrowCreate({
   },
 })
 
-/*
-  - arrow.node is HTMLElement
-  - arrow.timer is idInterval from setInterval()
-    REMEMBER about clearInterval(node.timer) after unmount
-*/
-document.body.appendChild(arrow.node);
+document.body.appendChild(arrow.getNode());
 ```
 
 Could be also used from `window.arrowCreate()`

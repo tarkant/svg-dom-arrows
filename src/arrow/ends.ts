@@ -1,4 +1,4 @@
-import { DIRECTION } from '../consts';
+import { DIRECTION } from '../consts/consts';
 
 const endNode = (point) => (isFunction(point.node)
   ? point.node()

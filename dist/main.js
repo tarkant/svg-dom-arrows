@@ -96,6 +96,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/arrow.class.ts":
+/*!****************************!*\
+  !*** ./src/arrow.class.ts ***!
+  \****************************/
+/*! exports provided: Arrow */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Arrow\", function() { return Arrow; });\n/* harmony import */ var _utils_dom_utils_class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/dom-utils.class */ \"./src/utils/dom-utils.class.ts\");\n/* harmony import */ var _arrow_ends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./arrow/ends */ \"./src/arrow/ends.ts\");\n/* harmony import */ var _arrow_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./arrow/path */ \"./src/arrow/path.ts\");\n\r\n\r\n\r\nvar Arrow = /** @class */ (function () {\r\n    function Arrow(_a) {\r\n        var _b = _a.className, className = _b === void 0 ? 'arrow' : _b, from = _a.from, to = _a.to, shapeApparence = _a.shapeApparence;\r\n        this.arrowPath = Object(_arrow_path__WEBPACK_IMPORTED_MODULE_2__[\"path\"])(Object(_arrow_ends__WEBPACK_IMPORTED_MODULE_1__[\"ends\"])(from), Object(_arrow_ends__WEBPACK_IMPORTED_MODULE_1__[\"ends\"])(to), shapeApparence);\r\n        this.node = this.drawSvgContent(this.arrowPath, className);\r\n        return this.node;\r\n    }\r\n    Arrow.prototype.drawSvgContent = function (arrow, className) {\r\n        var node = _utils_dom_utils_class__WEBPACK_IMPORTED_MODULE_0__[\"DomUtils\"].htmlToElements(\"<svg class=\\\"\" + className + \"\\\"\\n            style=\\\"top: \" + arrow.offset.y + \"px; left: \" + arrow.offset.x + \"px; position: absolute\\\"\\n            width=\" + arrow.size.width + \" height=\\\"\" + arrow.size.height + \"\\\">\\n            <defs\\n                id=\\\"defs2\\\">\\n                <marker id=\\\"arrow\\\" viewBox=\\\"0 0 10 10\\\" refX=\\\"5\\\" refY=\\\"5\\\"\\n                    markerWidth=\\\"12\\\" markerHeight=\\\"12\\\"\\n                    orient=\\\"auto-start-reverse\\\">\\n                <path d=\\\"M 0 0 L 10 5 L 0 10 z\\\" />\\n                </marker>\\n            </defs>\\n            <path class=\\\"\" + className + \"__path\\\" d=\\\"\" + arrow.points + \"\\\" marker-end=\\\"url(#arrow)\\\" marker-start=\\\"url(#arrow)\\\"/>\\n            </svg>\")[0];\r\n        return this.node;\r\n    };\r\n    return Arrow;\r\n}());\r\n\r\n\n\n//# sourceURL=webpack:///./src/arrow.class.ts?");
+
+/***/ }),
+
 /***/ "./src/arrow/ends.ts":
 /*!***************************!*\
   !*** ./src/arrow/ends.ts ***!
@@ -160,11 +172,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: default, DIRECTION, SHAPES */
+/*! exports provided: DIRECTION, SHAPES, Arrow */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _arrow_ends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrow/ends */ \"./src/arrow/ends.ts\");\n/* harmony import */ var _arrow_path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./arrow/path */ \"./src/arrow/path.ts\");\n/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./consts */ \"./src/consts.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"DIRECTION\", function() { return _consts__WEBPACK_IMPORTED_MODULE_2__[\"DIRECTION\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"SHAPES\", function() { return _consts__WEBPACK_IMPORTED_MODULE_2__[\"SHAPES\"]; });\n\n\r\n\r\nvar arrowCreate = function (_a) {\r\n    var _b = _a.className, className = _b === void 0 ? 'arrow' : _b, from = _a.from, to = _a.to, shapeApparence = _a.shapeApparence;\r\n    /**\r\n     * @param {String} HTML representing any number of sibling elements\r\n     * @return {NodeList}\r\n     */\r\n    function htmlToElements(html) {\r\n        var template = document.createElement('template');\r\n        template.innerHTML = html;\r\n        return template.content.childNodes;\r\n    }\r\n    console.warn(from);\r\n    var arrow = Object(_arrow_path__WEBPACK_IMPORTED_MODULE_1__[\"path\"])(Object(_arrow_ends__WEBPACK_IMPORTED_MODULE_0__[\"ends\"])(from), Object(_arrow_ends__WEBPACK_IMPORTED_MODULE_0__[\"ends\"])(to), shapeApparence);\r\n    var node = htmlToElements(\"<svg class=\\\"\" + className + \"\\\"\\n    style=\\\"top: \" + arrow.offset.y + \"px; left: \" + arrow.offset.x + \"px; position: absolute\\\"\\n    width=\" + arrow.size.width + \" height=\\\"\" + arrow.size.height + \"\\\">\\n      <defs\\n        id=\\\"defs2\\\">\\n        <marker id=\\\"arrow\\\" viewBox=\\\"0 0 10 10\\\" refX=\\\"5\\\" refY=\\\"5\\\"\\n            markerWidth=\\\"12\\\" markerHeight=\\\"12\\\"\\n            orient=\\\"auto-start-reverse\\\">\\n          <path d=\\\"M 0 0 L 10 5 L 0 10 z\\\" />\\n        </marker>\\n      </defs>\\n      <path class=\\\"\" + className + \"__path\\\" d=\\\"\" + arrow.points + \"\\\" marker-end=\\\"url(#arrow)\\\" marker-start=\\\"url(#arrow)\\\"/>\\n    </svg>\")[0];\r\n    /* const watcher = observer(from, to);\r\n    watcher.observe(() => {\r\n      const nextArrow = path(ends(from), ends(to), shapeApparence);\r\n      ((node as SVGAElement).querySelector(`.${className}`) as SVGAElement).style.top = `${nextArrow.offset.y}px`;\r\n      ((node as SVGAElement).querySelector(`.${className}`) as SVGAElement).style.left = `${nextArrow.offset.x}px`;\r\n      ((node as SVGAElement).querySelector(`.${className}`) as SVGAElement).style.width = `${nextArrow.size.width}px`;\r\n      ((node as SVGAElement).querySelector(`.${className}`) as SVGAElement).style.height = `${nextArrow.size.height}px`;\r\n  \r\n      ((node as SVGAElement).querySelector(`.${className}__path`) as SVGAElement).setAttribute('d', nextArrow.points);\r\n  \r\n    }); */\r\n    return {\r\n        node: node,\r\n        timer: 0,\r\n    };\r\n};\r\nif (window) {\r\n    window.arrowCreate = arrowCreate;\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (arrowCreate);\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _arrow_class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrow.class */ \"./src/arrow.class.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Arrow\", function() { return _arrow_class__WEBPACK_IMPORTED_MODULE_0__[\"Arrow\"]; });\n\n/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./consts */ \"./src/consts.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"DIRECTION\", function() { return _consts__WEBPACK_IMPORTED_MODULE_1__[\"DIRECTION\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"SHAPES\", function() { return _consts__WEBPACK_IMPORTED_MODULE_1__[\"SHAPES\"]; });\n\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/dom-utils.class.ts":
+/*!**************************************!*\
+  !*** ./src/utils/dom-utils.class.ts ***!
+  \**************************************/
+/*! exports provided: DomUtils */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DomUtils\", function() { return DomUtils; });\nvar DomUtils = /** @class */ (function () {\r\n    function DomUtils() {\r\n    }\r\n    /**\r\n       * @param {String} HTML representing any number of sibling elements\r\n       * @return {NodeList} Generated array of ChildNodes from the inputted string\r\n       */\r\n    DomUtils.htmlToElements = function (html) {\r\n        var template = document.createElement('template');\r\n        template.innerHTML = html;\r\n        return template.content.childNodes;\r\n    };\r\n    return DomUtils;\r\n}());\r\n\r\n\n\n//# sourceURL=webpack:///./src/utils/dom-utils.class.ts?");
 
 /***/ })
 

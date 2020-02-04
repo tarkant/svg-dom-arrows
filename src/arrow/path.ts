@@ -1,6 +1,5 @@
-import { ARROW_HEAD_SIZE, SHAPES } from '../consts';
+import { ARROW_HEAD_SIZE, SHAPES } from '../consts/consts';
 import { pointToArray, pointBezier } from './point';
-import { headBezierAngle, headBezierXY, headBezierAngleSmooth } from './head';
 
 export const pointSubstract = (point, subtrahend) => ({
   ...point,
@@ -123,10 +122,8 @@ export const path = (from, to, shapeApparence) => {
   let svgPath = '';
   if (shapeApparence === SHAPES.STRAIGHT_CURVED) {
     svgPath = smoothCurvesPathSVG(points[0], points[3]);
-    angle = headBezierAngleSmooth(1, points);
   } else {
     svgPath = pathListSVG(points);
-    angle = headBezierAngle(1, points);
   }
 
   return {
@@ -136,9 +133,5 @@ export const path = (from, to, shapeApparence) => {
       height: size.y + ARROW_HEAD_SIZE * 2,
     },
     points: svgPath,
-    head: {
-      ...angle,
-      ...headBezierXY(1, points),
-    },
   };
 };

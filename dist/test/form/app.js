@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
         "x": 500,
         "y": 100
       },
-      "direction": "right",
+      "direction": "left",
       "translation": [
         -0.5,
         -1
@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
         "x": 450,
         "y": 50
       },
-      "direction": "bottom-right",
+      "direction": "right",
       "translation": [
         0.9,
         1
@@ -45,10 +45,12 @@ window.addEventListener('load', function () {
     nodes.from.style.top = arrowProps.from.point.y + 'px'
     nodes.to.style.left = arrowProps.to.point.x + 'px'
     nodes.to.style.top = arrowProps.to.point.y + 'px'
+    console.log(arrow)
 
-    if (arrow) document.body.removeChild(arrow)
-    arrow = arrowCreate(arrowProps)
-    document.body.appendChild(arrow.node)
+    if (arrow) document.body.removeChild(arrow.node)
+    arrow = new SvgDomArrows.Arrow(arrowProps)
+    console.log(arrow)
+    document.body.appendChild(arrow.getNode())
   }
 
   document.querySelector('textarea').value = JSON.stringify(arrowProps, null, 2)
