@@ -1,22 +1,32 @@
 const path = require('path');
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: { main: './src/index.ts' },
+  resolve: {
+    extensions: ['.ts','.js'],
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    library: 'SvgDomArrows',
+    umdNamedDefine: true,
+    globalObject: 'this',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(t|j)s?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'awesome-typescript-loader?module=es6',
         }
       }
     ]
-  }
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000,
+  },
 };
