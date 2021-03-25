@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "outDir": "./dist",
-        "allowJs": true,
-        "checkJs": false,
-        "module": "commonjs",
-        "target": "es5",
-        "moduleResolution": "node",
-        "lib": ["es2017", "dom"]
-    }
+      "module": "commonjs",
+      "target": "es5",
+      "sourceMap": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true
+    },
+    "exclude": [
+      "node_modules"
+    ]
 }

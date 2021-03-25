@@ -1,143 +1,72 @@
-# ⚠️IMPORTANT ⚠️
+# 📦 Webpack + TypeScript + SASS Boilerplate
 
-This project is still WIP, please avoid using it as for now you might encounter future breaking changes. You have been warned.
+This is a simple boilerplate that provides you with all the tools you'll need to create a front-end Web application bundlet with Webpack.
 
-# 🏹 svg-dom-arrows
+## 🍴 How to use this boilerplate ?
 
-A tool to draw an SVG arrow between two DOM elements, this project is forked from [arrows-svg](https://github.com/sasza2/arrows) with some tweaks and customizations possibilities.
+Simple, just click the "Use this template" button or better, [click here](https://github.com/tarkant/webpack-typescript-sass-boilerplate/generate) and create your repo.
 
-![Arrow](docs/arrow-1.png?raw=true "Arrow example")
-
-# Installation
-
-```sh
-npm install svg-dom-arrows
-```
-# How to use it
-
-```js
-import { Arrow, DIRECTION } from 'svg-dom-arrows'
-
-const arrow = new Arrow({
-  className: 'arrow',
-  from: {
-    direction: DIRECTION.TOP,
-    node: document.getElementById('from'),
-    translation: [-0.5, -1],
-  },
-  to: {
-    direction: DIRECTION.RIGHT,
-    node: document.getElementById('to'),
-    translation: [0.9, 1],
-  },
-})
-
-document.body.appendChild(arrow.getNode());
+Next, run the good old :
+```bash
+npm install
 ```
 
-Could be also used from `window.arrowCreate()`
+And you're good to go!
 
-## CSS styles
-Styles should be added to make arrow visible. Feel free to change them.
+## 💻 How to run the developement server ?
 
-```css
-.arrow {
-  pointer-events: none;
-}
+Easy, run this command and your server will be on `http://localhost/8080`
 
-.arrow__path {
-  stroke: #000;
-  fill: transparent;
-  stroke-dasharray: 4 2;
-}
 
-.arrow__head line {
-  stroke: #000;
-  stroke-width: 1px;        
+```bash
+npm start
+```
+
+If you need to change the port for whatever reason head to the package.json file and add the flag --port 9000 to the end of the start script and before the closing quote as follows :
+
+```json
+"scripts": {
+    "start": "webpack-dev-server --mode development --port 9000",
 }
 ```
 
-# API
-```typescript
-arrowCreate(path:Path):Arrow
-```
+Of course it's up to you if you want to use another port 😊 .
 
-```typescript
-interface Arrow {
-  node: HTMLElement;
-  timer: number;
-}
-```
+## ⚒ How to build my app ?
 
-`timer` should be used to `clearInterval()` of observer.
+So you've finised everything and you want to ship it? Just run :
 
-```typescript
-enum Direction {
-  TOP_LEFT: 'top-left',
-  TOP: 'top',
-  TOP_RIGHT: 'top-right',
-  RIGHT: 'right',
-  BOTTOM_LEFT: 'bottom-left',
-  BOTTOM: 'bottom',
-  BOTTOM_RIGHT: 'bottom-right',
-  LEFT: 'left',
-}
-```
-
-Direction - Position of `Point` in HTMLElement from/to.
-
-```typescript
-interface Point {
-  direction: Direction;
-  node: HTMLElement;
-  translation: Array<number>;
-}
-```
-
-`translation` is array of two numbers `[x, y]` like `[-0.5, 1.3]` which are used by Bezier curve. `x` and `y` are offset of Bezier control point. Position of control point is calculated by function:
-
-```javascript
-{
-  x: point.x + viewport.width * point.translation[0],
-  y: point.y + viewport.height * point.translation[1],
-}
-```
-
-- `point.x` / `point.y` are from / to position,
-- `viewport` is size between points,
-- `point.translation` is array from above.
-
-translation could be tested in `test/form/index.html`
-
-```typescript
-interface Path {
-  className: string;
-  from: Point;
-  to: Point;
-}
-```
-
-# Building
-```sh
+```bash
 npm run build
 ```
 
-# Development
-```sh
-npm run start
+This will generate a bundle in the `dist` folder that you can upload to your server 🌍 .
+
+## 🧹 Eslint for clean TS
+
+You'll notice that I've also included ESlint with some rules for the TS part. If you're not into that stuff, you can remove the `.eslintrc.json` and run the following command :
+
+```bash
+npm remove -D @typescript-eslint/eslint-plugin @typescript-eslint/eslint-plugin-tslint @typescript-eslint/parser eslint
 ```
 
-# Testing
-```sh
-npm run test
+Be mindful though that I won't really advise this because ESlint lets you keep your code clean.
+
+If you want to lint your code, just run :
+
+```bash
+npm run build
 ```
 
-## Example 1
-```
-test/form/index.html
-```
+This will lint and fix all fixable lint issues.
 
-## Example 2
-```
-test/interval/index.html
-```
+## 🆘 Issues and contributions
+
+If you have an issue with the boilerplate or want to contribute, please let me know I'll be happy to interact with you.
+
+Happy building!
+
+## ⏲ Changelog
+
+- v1.1.0: Bumped packages version and changed the path flattening for assets.
+- v1.0.0: Initial template ready to be used.

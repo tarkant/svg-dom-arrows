@@ -1,32 +1,56 @@
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const CopywebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
-  entry: { main: './src/index.ts' },
-  resolve: {
-    extensions: ['.ts','.js'],
+  context: __dirname,
+  entry: {
+    app: './src/app.ts'
   },
   output: {
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
-    libraryTarget: 'umd',
-    library: 'SvgDomArrows',
-    umdNamedDefine: true,
-    globalObject: 'this',
   },
   module: {
     rules: [
       {
-        test: /\.(t|j)s?$/,
+        test: /\.ts?$/,
+        loader: 'ts-loader',
         exclude: /node_modules/,
-        use: {
-          loader: 'awesome-typescript-loader?module=es6',
-        }
-      }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      }, {
+        test: /\.(png|gif|jpg|jpeg|svg|xml)$/,
+        use: [ 'url-loader' ]
+      },
     ]
   },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
+    new CopywebpackPlugin({
+      patterns: [
+        {
+          from: 'src/assets/**/*',
+          to: 'assets/[name][ext]',
+
+        },
+      ],
+    }),
+  ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 3000,
-  },
+  }
 };

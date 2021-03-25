@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #333;
+}
+
+#app {
+    position: relative;
+}
+
+#svgpath {
+    position: absolute;
+    background: rgba(128,0,0,.2);
+    overflow: visible;
+}
+
+.box {
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    position: absolute;
+    opacity: .5;
+}
+
+.start {
+    top: 40rem;
+    left: 2rem;
+}
+
+.end {
+    top: 16rem;
+    left: 10rem;
+}
+
+.green {
+    background-color: #BADA55;
+}
+
+.gray {
+    background-color: #888;
+}
