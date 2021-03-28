@@ -55,7 +55,7 @@
             "error",
             "smart"
         ],
-        "indent": ["error", 2],
+        "indent": ["error", 4],
         "guard-for-in": "error",
         "id-blacklist": "off",
         "id-match": "off",
