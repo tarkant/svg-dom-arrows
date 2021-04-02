@@ -6,30 +6,187 @@ body {
 
 #app {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.box {
-    width: 4rem;
-    height: 4rem;
-    display: block;
-    position: absolute;
-    opacity: .5;
+.block {
+    display: flex;
+    width: 20rem;
+    height: 20rem;
+    position: relative;
+    border: solid 2px white;
+    margin: 2rem;
+    padding: 2rem;
 }
 
-.start {
-    top: 4rem;
-    left: 2rem;
+.case-1 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        top: 4rem;
+        left: 2rem;
+    }
+    
+    .end {
+        top: 16rem;
+        left: 10rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
 }
-
-.end {
-    top: 16rem;
-    left: 10rem;
+.case-2 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        top: 2rem;
+        left: 18rem;
+    }
+    
+    .end {
+        top: 16rem;
+        left: 4rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
 }
-
-.green {
-    background-color: #BADA55;
+.case-3 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        top: 16rem;
+        left: 3rem;
+    }
+    
+    .end {
+        top: 2rem;
+        left: 15rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
 }
+.case-4 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        top: 14rem;
+        left: 18rem;
+    }
+    
+    .end {
+        top: 2rem;
+        left: 2rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
+}
+.case-5 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        width: 8rem;
+        height: 4rem;
 
-.gray {
-    background-color: #888;
+        top: 4rem;
+        left: 2rem;
+    }
+    
+    .end {
+        top: 16rem;
+        left: 10rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
+}
+.case-6 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        top: 4rem;
+        left: 2rem;
+    }
+    
+    .end {
+        width: 8rem;
+        height: 4rem;
+
+        top: 16rem;
+        left: 10rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
 }
