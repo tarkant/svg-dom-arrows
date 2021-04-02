@@ -8,11 +8,16 @@ new Arrow({
   start: {
     element: s,
     position: {
-      top: 50,
-      right: 50,
+      top: 100,
+      right: 100,
     },
   },
   end: {
     element: e,
+    position: {
+      top: 100,
+      right: 100,
+    },
   },
-});
+  appendTo: document,
+}, true);

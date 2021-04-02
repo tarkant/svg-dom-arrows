@@ -1,5 +1,5 @@
 import { SVGNS } from './consts/Constants';
-import { ArrowOptions } from './models/ArrowOptions';
+import { ArrowOptions, ArrowPosition } from './models/ArrowOptions';
 
 export class Arrow {
 
@@ -27,12 +27,12 @@ export class Arrow {
     this.svgPath.appendChild(this.svgPathLine);
 
     // M Y1,Y2 X1,X2  for a simple line
-    this.svgPathLine.setAttribute('d', this.getPath(startBbox, endBbox));
+    this.svgPathLine.setAttribute('d', this.getPath(startBbox, endBbox, options));
 
     // M Yp1,Yp2 C Xc1,Yc1 Xc2,Yc2 Xp1,Xp2
     // svgpathline.setAttribute('d', `M ${0 + offsetX},${0 + offsetY} C 0,${height / 2} ${width / 2},${height} ${width - offsetX},${height - offsetY}`);
 
-    const { width, height } = this.getSVGProportions(startBbox, endBbox);
+    const { width, height } = this.getSVGProportions(startBbox, endBbox, options);
     this.svgPath.setAttribute('width', `${width}`);
     this.svgPath.setAttribute('height', `${height}`);
 
@@ -45,11 +45,7 @@ export class Arrow {
 
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
 
-    const offsetX = startBbox.left > endBbox.left ? startBbox.left - endBbox.left : 0;
-    const offsetY = startBbox.top > endBbox.top ? startBbox.top - endBbox.top : 0;
-
-    this.svgPath.style.top = `${startBbox.top - offsetY}px`;
-    this.svgPath.style.left = `${startBbox.left - offsetX}px`;
+    this.setSvgStyle(startBbox, endBbox, options);
 
     console.table(startBbox);
     console.table(endBbox);
@@ -62,9 +58,8 @@ export class Arrow {
    * @param startBbox bbox of the start dom element
    * @returns path string
    */
-  getPath(endBbox?: DOMRect, startBbox?: DOMRect, options?: ArrowOptions): string {
-    const width = Math.abs(endBbox.left - startBbox.left);
-    const height = Math.abs(endBbox.top - startBbox.top);
+  getPath(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions): string {
+    const { width, height } = this.getSVGProportions(endBbox, startBbox, options);
 
     const offsetX = startBbox.left > endBbox.left ? startBbox.left - endBbox.left : 0;
     const offsetY = startBbox.top > endBbox.top ? startBbox.top - endBbox.top : 0;
@@ -72,10 +67,24 @@ export class Arrow {
     return `M ${0 + offsetX},${0 + offsetY} ${width - offsetX},${height - offsetY}`;
   }
 
-  getSVGProportions(endBbox?: DOMRect, startBbox?: DOMRect, options?: ArrowOptions): { width: number; height: number } {
+  getSVGProportions(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions): { width: number; height: number } {
+    const width = Math.abs(endBbox.left - startBbox.left);
+    const height = Math.abs(endBbox.top - startBbox.top);
+
     return {
-      width: Math.abs(endBbox.left - startBbox.left),
-      height: Math.abs(endBbox.top - startBbox.top),
+      width: width,
+      height: height,
     };
+  }
+
+  setSvgStyle(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {
+    const offsetX = startBbox.left > endBbox.left ? startBbox.left - endBbox.left : 0;
+    const offsetY = startBbox.top > endBbox.top ? startBbox.top - endBbox.top : 0;
+
+    // If position is undefined, set the values to 0 for top and right
+    const position = options.start.position ? options.start.position : { top: 0, right: 0 };
+
+    this.svgPath.style.top = `${startBbox.top - (offsetY - (startBbox.height * (position.top / 100)))}px`;
+    this.svgPath.style.left = `${startBbox.left - (offsetX - (startBbox.width * (position.right / 100)))}px`;
   }
 }

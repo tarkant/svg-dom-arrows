@@ -4,7 +4,7 @@ export interface ArrowOptions {
     appendTo?: Document;
 }
 
-interface ArrowDOMElement {
+export interface ArrowDOMElement {
     /**
      * Any element you can select using `document.(getElementById | querySelector etc...)`
      */
@@ -12,8 +12,13 @@ interface ArrowDOMElement {
     /**
      * Where you'd like that you arrow starts/ends in percent, by default it's 0,0
      */
-    position?: {
-        top?: number;
-        right?: number;
-    };
+    position?: ArrowPosition;
+}
+
+export interface ArrowPosition {
+    /**
+     * Where you'd like that you arrow starts/ends in percent, by default it's 0,0
+     */
+    top: number;
+    right: number;
 }
