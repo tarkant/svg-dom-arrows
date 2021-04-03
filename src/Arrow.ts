@@ -87,10 +87,16 @@ export class Arrow {
     const offsetY = startBbox.top > endBbox.top ? startBbox.top - endBbox.top : 0;
 
     // If position is undefined, set the values to 0 for top and right
-    const position = options.start.position ? options.start.position : { top: 0, right: 0 };
+    const startPos = options.start.position ? options.start.position : { top: 0, right: 0 };
+    const endPos = options.end.position ? options.end.position : { top: 0, right: 0 };
 
-    this.svgPath.style.top = `${startBbox.top - (offsetY - (startBbox.height * (position.top / 100)))}px`;
-    this.svgPath.style.left = `${startBbox.left - (offsetX - (startBbox.width * (position.right / 100)))}px`;
+    const top = startBbox.left > startBbox.left ?
+      startBbox.top : endBbox.top - (endBbox.top * (endBbox.top / 100));
+    const left = startBbox.left > startBbox.left ?
+      startBbox.left : endBbox.left - (endBbox.left * (endBbox.left / 100));
+
+    this.svgPath.style.top = `${startBbox.top - (offsetY - (startBbox.height * (startPos.top / 100)))}px`;
+    this.svgPath.style.left = `${startBbox.left - (offsetX - (startBbox.width * (startPos.right / 100)))}px`;
   }
 
   setSvgSize(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {
