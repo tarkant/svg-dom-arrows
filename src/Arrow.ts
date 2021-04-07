@@ -44,9 +44,6 @@ export class Arrow {
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
 
     this.setSvgStyle(startBbox, endBbox, options);
-
-    console.table(startBbox);
-    console.table(endBbox);
   }
 
   /**
@@ -70,15 +67,23 @@ export class Arrow {
   }
 
   getSVGProportions(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions): { width: number; height: number } {
-    const width = Math.abs(endBbox.left - startBbox.left);
-    const height = Math.abs(endBbox.top - startBbox.top);
-
     // If position is undefined, set the values to 0 for top and right
-    const position = options.end.position ? options.end.position : { top: 0, right: 0 };
+    const startPos = options.start.position ? options.start.position : { top: 0, right: 0 };
+    const endPos = options.end.position ? options.end.position : { top: 0, right: 0 };
+
+    const width = Math.abs(
+      endBbox.left
+      - startBbox.left
+    );
+    const height = Math.abs(
+      endBbox.top
+      - startBbox.top
+    );
 
     return {
-      width: width - (startBbox.height * (position.top / 100)),
-      height: height - (startBbox.width * (position.right / 100)),
+      // Width of the svg - the starting position offset * the size + the ending position offset * size
+      width: width - ((startPos.right / 100) * startBbox.width) + ((endPos.right / 100) * endBbox.width),
+      height: height - ((startPos.top / 100) * startBbox.height) + ((endPos.top / 100) * endBbox.height),
     };
   }
 
@@ -90,13 +95,12 @@ export class Arrow {
     const startPos = options.start.position ? options.start.position : { top: 0, right: 0 };
     const endPos = options.end.position ? options.end.position : { top: 0, right: 0 };
 
-    const top = startBbox.left > startBbox.left ?
-      startBbox.top : endBbox.top - (endBbox.top * (endBbox.top / 100));
-    const left = startBbox.left > startBbox.left ?
-      startBbox.left : endBbox.left - (endBbox.left * (endBbox.left / 100));
+    // TODO: this is supposed to take some condition but I can't figure it out
+    const offsetXP = startBbox.width > endBbox.width ? -((startPos.right / 100) / startBbox.width) : ((endPos.right / 100) / endBbox.width);
+    const offsetYP = startBbox.height > endBbox.height ? -((startPos.top / 100) / startBbox.height) : ((endPos.top / 100) / endBbox.height);
 
-    this.svgPath.style.top = `${startBbox.top - (offsetY - (startBbox.height * (startPos.top / 100)))}px`;
-    this.svgPath.style.left = `${startBbox.left - (offsetX - (startBbox.width * (startPos.right / 100)))}px`;
+    this.svgPath.style.left = `${(startBbox.left - offsetX) + ((startPos.right / 100) * startBbox.width)}px`;
+    this.svgPath.style.top = `${(startBbox.top - offsetY) + ((startPos.top / 100) * startBbox.height)}px`;
   }
 
   setSvgSize(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {

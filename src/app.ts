@@ -11,15 +11,15 @@ cases.map((item) => {
     start: {
       element: s,
       position: {
-        top: 50,
-        right: 50,
+        top: 100,
+        right: 100,
       },
     },
     end: {
       element: e,
       position: {
-        top: 50,
-        right: 50,
+        top: 100,
+        right: 100,
       },
     },
     appendTo: document,
