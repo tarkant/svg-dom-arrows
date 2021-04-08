@@ -22,6 +22,10 @@ body {
     padding: 2rem;
 }
 
+.box {
+    border-top-left-radius: 2rem;
+}
+
 .case-1 {
     .box {
         width: 4rem;
@@ -189,4 +193,8 @@ body {
     .gray {
         background-color: #888;
     }
+}
+
+.debug {
+    border: solid 1px red;
 }

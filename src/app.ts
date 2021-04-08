@@ -11,8 +11,8 @@ cases.map((item) => {
     start: {
       element: s,
       position: {
-        top: 100,
-        right: 100,
+        top: 0,
+        right: 0,
       },
     },
     end: {
@@ -22,6 +22,6 @@ cases.map((item) => {
         right: 100,
       },
     },
-    appendTo: document,
+    appendTo: document.body,
   }, true);
 });

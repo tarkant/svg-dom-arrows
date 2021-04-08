@@ -1,7 +1,7 @@
 export interface ArrowOptions {
     start: ArrowDOMElement;
     end: ArrowDOMElement;
-    appendTo?: Document;
+    appendTo?: Element;
 }
 
 export interface ArrowDOMElement {
