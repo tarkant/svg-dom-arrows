@@ -22,8 +22,12 @@ body {
     padding: 2rem;
 }
 
-.box {
-    border-top-left-radius: 2rem;
+.start {
+    border-bottom-right-radius: 1rem;
+}
+
+.end {
+    border-top-left-radius: 1rem;
 }
 
 .case-1 {
@@ -183,7 +187,127 @@ body {
         height: 4rem;
 
         top: 16rem;
-        left: 10rem;
+        left: 14rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
+}
+.case-7 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        top: 14rem;
+        left: 16rem;
+    }
+    
+    .end {
+        width: 8rem;
+        height: 4rem;
+
+        top: 4rem;
+        left: 4rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
+}
+.case-8 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        width: 8rem;
+        height: 4rem;
+        
+        top: 14rem;
+        left: 12rem;
+    }
+    
+    .end {
+        top: 4rem;
+        left: 2rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
+}
+.case-9 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {
+        width: 4rem;
+        height: 8rem;
+        
+        top: 4rem;
+        left: 2rem;
+    }
+    
+    .end {
+        top: 16rem;
+        left: 14rem;
+    }
+    
+    .green {
+        background-color: #BADA55;
+    }
+    
+    .gray {
+        background-color: #888;
+    }
+}
+.case-10 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+    
+    .start {        
+        top: 4rem;
+        left: 2rem;
+    }
+    
+    .end {
+        width: 4rem;
+        height: 8rem;
+
+        top: 14rem;
+        left: 14rem;
     }
     
     .green {
