@@ -14,30 +14,46 @@ export class Arrow {
   public svgPathLine: SVGPathElement;
 
   private containerDiv: HTMLDivElement;
+  private startBbox: DOMRect;
+  private endBbox: DOMRect;
+  private options: ArrowOptions;
 
   constructor(options: ArrowOptions, debug = false) {
-    const startBbox = options.start.element.getBoundingClientRect();
-    const endBbox = options.end.element.getBoundingClientRect();
+    // init this.options
+    this.options = options;
+    if(!options.start.position) {
+      this.options.start.position = {top: 0, left: 0};
+    }
+    if(!options.end.position) {
+      this.options.end.position = {top: 0, left: 0};
+    }
+    this.startBbox = this.options.start.element.getBoundingClientRect();
+    this.endBbox = this.options.end.element.getBoundingClientRect();
 
+    this.options.start.position.offsetX = this.options.start.position.left * this.startBbox.left;
+    this.options.start.position.offsetY = this.options.start.position.top * this.startBbox.height;
+    this.options.end.position.offsetX = this.options.end.position.left * this.endBbox.left;
+    this.options.end.position.offsetY = this.options.end.position.top * this.endBbox.height;
+    if(!this.options.manualRender) {
+      this.render(debug);
+    }
+  }
+
+  render(debug = false) {
     this.containerDiv = document.createElement('div');
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
 
-    if (options.appendTo) {
-      options.appendTo.appendChild(this.containerDiv);
+    if (this.options.appendTo) {
+      this.options.appendTo.appendChild(this.containerDiv);
     }
 
     this.containerDiv.appendChild(this.svgElement);
     this.svgElement.appendChild(this.svgPathLine);
+    this.setSvgSize();
+    this.setDivSize();
 
-    // M Y1,Y2 X1,X2  for a simple line
-    // this.svgPathLine.setAttribute('d', this.getPath(endBbox, startBbox, options));
-
-    // M Yp1,Yp2 C Xc1,Yc1 Xc2,Yc2 Xp1,Xp2
-    // svgpathline.setAttribute('d', `M ${0 + offsetX},${0 + offsetY} C 0,${height / 2} ${width / 2},${height} ${width - offsetX},${height - offsetY}`);
-
-    this.setSvgSize(endBbox, startBbox, options);
-    this.setDivSize(endBbox, startBbox, options);
+    this.svgPathLine.setAttribute('d', this.getPath());
 
     this.svgElement.style.position = 'absolute';
     this.svgElement.style.overflow = 'visible';
@@ -48,7 +64,7 @@ export class Arrow {
 
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
 
-    this.setSvgStyle(endBbox, startBbox, options);
+    this.setSvgStyle();
   }
 
   /**
@@ -58,89 +74,45 @@ export class Arrow {
    * @param startBbox bbox of the start dom element
    * @returns path string
    */
-  getPath(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions): string {
-    const { width, height } = this.getSVGProportions(endBbox, startBbox, options);
+  getPath(): string {
+    const { width, height, start, end } = this.getSVGProportions();
 
-    // If position is undefined, set the values to 0 for top and right
-    const startPos = options.start.position ? options.start.position : { top: 0, left: 0 };
-    const endPos = options.end.position ? options.end.position : { top: 0, left: 0 };
-
-    const offsetX = (startBbox.left + (startBbox.width * (startPos.left / 100))) > (endBbox.left + (endBbox.width * (endPos.left / 100))) ? startBbox.left - endBbox.left - (endBbox.width * (endPos.left / 100)) : 0;
-    const offsetY = (startBbox.top + (startBbox.height * (startPos.top / 100))) > (endBbox.top + (endBbox.height * (endPos.top / 100))) ? startBbox.top - endBbox.top - (endBbox.height * (endPos.top / 100)) : 0;
+    const offsetX = start.x > end.x ? this.startBbox.left - this.endBbox.left - this.options.end.position.offsetX : 0;
+    const offsetY = start.y > end.y ? this.startBbox.top - this.endBbox.top - this.options.end.position.offsetY : 0;
 
     return `M ${0 + offsetX},${0 + offsetY} ${width - offsetX},${height - offsetY}`;
   }
 
-  getSVGProportions(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions): { width: number; height: number } {
+  setSvgStyle() {
+    const { start, end } = this.getSVGProportions();
 
-    // If position is undefined, set the values to 0 for top and right
-    const startPos = options.start.position ? options.start.position : { top: 0, left: 0 };
-    const endPos = options.end.position ? options.end.position : { top: 0, left: 0 };
-
-    const X1 = startBbox.top + (startBbox.height * startPos.top);
-    const X2 = endBbox.top + (endBbox.height * endPos.top);
-
-    const Y1 = startBbox.left + (startBbox.width * startPos.left);
-    const Y2 = endBbox.left + (endBbox.width * endPos.left);
-
-    return {
-      // Width of the svg - the starting position offset * the size + the ending position offset * size
-      width: Math.abs(Y1 - Y2),
-      height: Math.abs(X1 - X2),
-    };
-  }
-
-  setSvgStyle(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {
-    // If position is undefined, set the values to 0 for top and right
-    const startPos = options.start.position ? options.start.position : { top: 0, left: 0 };
-    const endPos = options.end.position ? options.end.position : { top: 0, left: 0 };
-
-    const startPoint = {
-      top: startBbox.top - (startBbox.height * startPos.top / 100),
-      left: startBbox.left - (startBbox.width * startPos.left / 100),
-    };
-
-    const endPoint = {
-      top: endBbox.top - (endBbox.height * endPos.top / 100),
-      left: endBbox.left - (endBbox.width * endPos.left / 100),
-    };
-
-    const top = startPoint.top < endPoint.top ?
-      startPos.top * startBbox.height : endPos.top * endBbox.height ;
-
-    const left = startPoint.left < endPoint.left ?
-      startPos.left * startBbox.width : endPos.left * endBbox.width ;
+    const top = start.y < end.y ? this.options.start.position.offsetY : this.options.end.position.offsetY ;
+    const left = start.x < end.x ? this.options.start.position.offsetX : this.options.end.position.offsetX ;
 
     this.svgElement.style.top = `${top}px`;
     this.svgElement.style.left = `${left}px`;
   }
 
-  setSvgSize(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {
-    const { width, height } = this.getSVGProportions(endBbox, startBbox, options);
+  setSvgSize() {
+    const { width, height } = this.getSVGProportions();
 
     this.svgElement.setAttribute('width', `${width}`);
     this.svgElement.setAttribute('height', `${height}`);
   }
 
-  setDivSize(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {
-    const width = startBbox.left > endBbox.left ? Math.abs(
-      endBbox.left
-      - startBbox.right
-    ): Math.abs(
-      endBbox.right
-      - startBbox.left
+  setDivSize() {
+    const width = Math.abs(
+      Math.min(this.startBbox.left, this.endBbox.left)
+      - Math.max(this.endBbox.right, this.startBbox.right)
     );
 
-    const height = startBbox.top > endBbox.top ? Math.abs(
-      endBbox.top
-      - startBbox.bottom
-    ) : Math.abs(
-      endBbox.bottom
-      - startBbox.top
+    const height = Math.abs(
+      Math.min(this.startBbox.top, this.endBbox.top)
+      - Math.max(this.endBbox.bottom, this.startBbox.bottom)
     );
 
-    const top = startBbox.top > endBbox.top ? endBbox.top : startBbox.top;
-    const left = startBbox.left > endBbox.left ? endBbox.left : startBbox.left;
+    const top = Math.min(this.startBbox.top, this.endBbox.top);
+    const left = Math.min(this.startBbox.left, this.endBbox.left);
 
     this.containerDiv.classList.add('debug');
     this.containerDiv.style.position = 'absolute';
@@ -150,5 +122,27 @@ export class Arrow {
 
     this.containerDiv.style.top = `${top}px`;
     this.containerDiv.style.left = `${left}px`;
+  }
+
+  getSVGProportions() {
+    const y1 = this.startBbox.top + this.options.start.position.offsetY;
+    const y2 = this.endBbox.top + this.options.end.position.offsetY;
+
+    const x1 = this.startBbox.left + this.options.start.position.offsetX;
+    const x2 = this.endBbox.left + this.options.end.position.offsetX;
+
+    return {
+      // Width of the svg - the starting position offset * the size + the ending position offset * size
+      width: Math.abs(x1 - x2),
+      height: Math.abs(y1 - y2),
+      start: {
+        x: x1,
+        y: y1
+      },
+      end: {
+        x: x2,
+        y: y2
+      }
+    };
   }
 }

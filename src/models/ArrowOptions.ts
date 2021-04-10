@@ -2,6 +2,7 @@ export interface ArrowOptions {
     start: ArrowDOMElement;
     end: ArrowDOMElement;
     appendTo?: Element;
+    manualRender?: boolean;
 }
 
 export interface ArrowDOMElement {
@@ -21,4 +22,6 @@ export interface ArrowPosition {
      */
     top: number;
     left: number;
+    offsetX?: number;
+    offsetY?: number;
 }
