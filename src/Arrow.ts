@@ -19,21 +19,17 @@ export class Arrow {
   private options: ArrowOptions;
 
   constructor(options: ArrowOptions, debug = false) {
-    // init this.options
     this.options = options;
-    if(!options.start.position) {
-      this.options.start.position = {top: 0, left: 0};
-    }
-    if(!options.end.position) {
-      this.options.end.position = {top: 0, left: 0};
-    }
     this.startBbox = this.options.start.element.getBoundingClientRect();
     this.endBbox = this.options.end.element.getBoundingClientRect();
 
-    this.options.start.position.offsetX = this.options.start.position.left * this.startBbox.left;
+    if(!options.start.position) {this.options.start.position = {top: 0, left: 0};}
+    if(!options.end.position) {this.options.end.position = {top: 0, left: 0};}
+    this.options.start.position.offsetX = this.options.start.position.left * this.startBbox.width;
     this.options.start.position.offsetY = this.options.start.position.top * this.startBbox.height;
-    this.options.end.position.offsetX = this.options.end.position.left * this.endBbox.left;
+    this.options.end.position.offsetX = this.options.end.position.left * this.endBbox.width;
     this.options.end.position.offsetY = this.options.end.position.top * this.endBbox.height;
+
     if(!this.options.manualRender) {
       this.render(debug);
     }
@@ -50,21 +46,21 @@ export class Arrow {
 
     this.containerDiv.appendChild(this.svgElement);
     this.svgElement.appendChild(this.svgPathLine);
-    this.setSvgSize();
-    this.setDivSize();
+    this.setSvgAttrs();
 
     this.svgPathLine.setAttribute('d', this.getPath());
 
-    this.svgElement.style.position = 'absolute';
-    this.svgElement.style.overflow = 'visible';
-
     if (debug) {
       this.svgElement.style.background = 'rgba(128,0,0,.2)';
+      this.containerDiv.classList.add('debug');
+      this.setDivAttrs();
     }
 
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
+  }
 
-    this.setSvgStyle();
+  release() {
+    this.containerDiv.remove();
   }
 
   /**
@@ -77,30 +73,24 @@ export class Arrow {
   getPath(): string {
     const { width, height, start, end } = this.getSVGProportions();
 
-    const offsetX = start.x > end.x ? this.startBbox.left - this.endBbox.left - this.options.end.position.offsetX : 0;
-    const offsetY = start.y > end.y ? this.startBbox.top - this.endBbox.top - this.options.end.position.offsetY : 0;
+    const offsetX = start.x > end.x ? width: 0;
+    const offsetY = start.y > end.y ? height : 0;
 
-    return `M ${0 + offsetX},${0 + offsetY} ${width - offsetX},${height - offsetY}`;
+    return `M ${offsetX},${offsetY} ${width - offsetX},${height - offsetY}`;
   }
 
-  setSvgStyle() {
-    const { start, end } = this.getSVGProportions();
-
-    const top = start.y < end.y ? this.options.start.position.offsetY : this.options.end.position.offsetY ;
-    const left = start.x < end.x ? this.options.start.position.offsetX : this.options.end.position.offsetX ;
+  setSvgAttrs() {
+    const { start, end, top, left, width, height } = this.getSVGProportions();
 
     this.svgElement.style.top = `${top}px`;
     this.svgElement.style.left = `${left}px`;
-  }
-
-  setSvgSize() {
-    const { width, height } = this.getSVGProportions();
-
+    this.svgElement.style.position = 'absolute';
+    this.svgElement.style.overflow = 'visible';
     this.svgElement.setAttribute('width', `${width}`);
     this.svgElement.setAttribute('height', `${height}`);
   }
 
-  setDivSize() {
+  setDivAttrs() {
     const width = Math.abs(
       Math.min(this.startBbox.left, this.endBbox.left)
       - Math.max(this.endBbox.right, this.startBbox.right)
@@ -114,7 +104,6 @@ export class Arrow {
     const top = Math.min(this.startBbox.top, this.endBbox.top);
     const left = Math.min(this.startBbox.left, this.endBbox.left);
 
-    this.containerDiv.classList.add('debug');
     this.containerDiv.style.position = 'absolute';
 
     this.containerDiv.style.width = `${width}px`;
@@ -142,7 +131,9 @@ export class Arrow {
       end: {
         x: x2,
         y: y2
-      }
+      },
+      top: y1 < y2 ? this.options.start.position.offsetY : this.options.end.position.offsetY,
+      left: x1 < x2 ? this.options.start.position.offsetX : this.options.end.position.offsetX
     };
   }
 }
