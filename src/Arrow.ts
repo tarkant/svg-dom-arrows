@@ -106,16 +106,13 @@ export class Arrow {
     };
 
     const top = startPoint.top < endPoint.top ?
-      (startPos.top / 100) * startBbox.height : (endPos.top / 100) * endBbox.height ;
+      startPos.top * startBbox.height : endPos.top * endBbox.height ;
 
     const left = startPoint.left < endPoint.left ?
-      (startPos.left / 100) * startBbox.width : (endPos.left / 100) * endBbox.width ;
+      startPos.left * startBbox.width : endPos.left * endBbox.width ;
 
-    const componsateX = startBbox.left > endBbox.left && startBbox.top > endBbox.top ? -(endPos.top / 100) * endBbox.height : -(startPos.top / 100) * startBbox.height;
-    const componsateY = startBbox.left > endBbox.left && startBbox.top > endBbox.top ? -(endPos.left / 100) * endBbox.width : -(startPos.left / 100) * startBbox.width;
-
-    this.svgElement.style.top = `${top + componsateX}px`;
-    this.svgElement.style.left = `${left + componsateY}px`;
+    this.svgElement.style.top = `${top}px`;
+    this.svgElement.style.left = `${left}px`;
   }
 
   setSvgSize(endBbox: DOMRect, startBbox: DOMRect, options: ArrowOptions) {

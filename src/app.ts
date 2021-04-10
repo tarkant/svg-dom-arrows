@@ -22,8 +22,8 @@ cases.map((item) => {
     start: {
       element: s,
       position: {
-        top: 1,
-        left: 1,
+        top: 0,
+        left: 0,
       },
     },
     end: {
