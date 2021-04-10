@@ -20,5 +20,5 @@ export interface ArrowPosition {
      * Where you'd like that you arrow starts/ends in percent, by default it's 0,0
      */
     top: number;
-    right: number;
+    left: number;
 }
