@@ -1,6 +1,6 @@
 import { SVGNS } from './consts/Constants';
 import { ArrowOptions, ArrowPosition } from './models/ArrowOptions';
-
+import { Point } from './models/Path';
 export class Arrow {
 
   /**
@@ -30,6 +30,10 @@ export class Arrow {
     this.options.end.position.offsetX = this.options.end.position.left * this.endBbox.width;
     this.options.end.position.offsetY = this.options.end.position.top * this.endBbox.height;
 
+    if(options.svgPath) {
+      this.svgPath = options.svgPath;
+    }
+
     if(!this.options.manualRender) {
       this.render(debug);
     }
@@ -46,6 +50,7 @@ export class Arrow {
 
     this.containerDiv.appendChild(this.svgElement);
     this.svgElement.appendChild(this.svgPathLine);
+    this.setDivAttrs();
     this.setSvgAttrs();
 
     this.svgPathLine.setAttribute('d', this.getPath());
@@ -53,7 +58,6 @@ export class Arrow {
     if (debug) {
       this.svgElement.style.background = 'rgba(128,0,0,.2)';
       this.containerDiv.classList.add('debug');
-      this.setDivAttrs();
     }
 
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
@@ -73,11 +77,41 @@ export class Arrow {
   getPath(): string {
     const { width, height, start, end } = this.getSVGProportions();
 
-    const offsetX = start.x > end.x ? width: 0;
-    const offsetY = start.y > end.y ? height : 0;
+    const startX = start.x > end.x ? width: 0;
+    const startY = start.y > end.y ? height : 0;
+    const endX = width - startX;
+    const endY = height - startY;
 
-    return `M ${offsetX},${offsetY} ${width - offsetX},${height - offsetY}`;
+    const points = [
+      {x: startX, y: startY},
+
+      ...(
+        width > height
+          ? [
+            {x:startX, y: Math.abs(startY - (startY + endY)*.5)},
+            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
+            {x:endX, y: Math.abs(startY - (startY + endY)*.5)}
+          ]
+          : [
+            {x:Math.abs(startX - (startX + endX)*.5), y: startY},
+            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
+            {x:Math.abs(startX - (startX + endX)*.5), y:endY}
+          ]
+      ),
+
+      {x: endX, y: endY}
+    ];
+
+    return this.svgPath(points);
   }
+
+  svgPath(points: Point[]): string {
+    return `
+    M ${points[0].x},${points[0].y} 
+    C ${points[1].x},${points[1].y} ${points[1].x},${points[1].y} ${points[2].x},${points[2].y}
+    C ${points[3].x},${points[3].y} ${points[3].x},${points[3].y} ${points[4].x},${points[4].y}
+    `;
+  };
 
   setSvgAttrs() {
     const { start, end, top, left, width, height } = this.getSVGProportions();

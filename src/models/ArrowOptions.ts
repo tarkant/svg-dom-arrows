@@ -1,8 +1,11 @@
+import { SvgPather } from './Path';
+
 export interface ArrowOptions {
     start: ArrowDOMElement;
     end: ArrowDOMElement;
     appendTo?: Element;
     manualRender?: boolean;
+    svgPath?: SvgPather;
 }
 
 export interface ArrowDOMElement {
