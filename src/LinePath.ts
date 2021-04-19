@@ -1,7 +1,8 @@
 import { SVGNS } from './consts/Constants';
-import { ArrowOptions, ArrowPosition } from './models/ArrowOptions';
+import { ArrowOptions } from './models/ArrowOptions';
 import { Point } from './models/Path';
-export class Arrow {
+
+export class LinePath {
 
   /**
    * The main SVG element. You can reuse it if needed.
@@ -13,10 +14,10 @@ export class Arrow {
    */
   public svgPathLine: SVGPathElement;
 
-  private containerDiv: HTMLDivElement;
-  private startBbox: DOMRect;
-  private endBbox: DOMRect;
-  private options: ArrowOptions;
+  public containerDiv: HTMLDivElement;
+  public startBbox: DOMRect;
+  public endBbox: DOMRect;
+  public options: ArrowOptions;
 
   constructor(options: ArrowOptions, debug = false) {
     this.options = options;
@@ -39,7 +40,7 @@ export class Arrow {
     }
   }
 
-  render(debug = false) {
+  public render(debug = false) {
     this.containerDiv = document.createElement('div');
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
@@ -63,7 +64,7 @@ export class Arrow {
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
   }
 
-  release() {
+  public release() {
     this.containerDiv.remove();
   }
 
@@ -84,21 +85,6 @@ export class Arrow {
 
     const points = [
       {x: startX, y: startY},
-
-      ...(
-        width > height
-          ? [
-            {x:startX, y: Math.abs(startY - (startY + endY)*.5)},
-            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-            {x:endX, y: Math.abs(startY - (startY + endY)*.5)}
-          ]
-          : [
-            {x:Math.abs(startX - (startX + endX)*.5), y: startY},
-            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-            {x:Math.abs(startX - (startX + endX)*.5), y:endY}
-          ]
-      ),
-
       {x: endX, y: endY}
     ];
 
@@ -106,11 +92,7 @@ export class Arrow {
   }
 
   svgPath(points: Point[]): string {
-    return `
-    M ${points[0].x},${points[0].y} 
-    C ${points[1].x},${points[1].y} ${points[1].x},${points[1].y} ${points[2].x},${points[2].y}
-    C ${points[3].x},${points[3].y} ${points[3].x},${points[3].y} ${points[4].x},${points[4].y}
-    `;
+    return `M ${points[0].x},${points[0].y} ${points[3].x},${points[3].y}`;
   };
 
   setSvgAttrs() {

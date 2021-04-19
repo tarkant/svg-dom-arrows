@@ -1,4 +1,5 @@
-import { Arrow } from './Arrow';
+import { LinePath } from './LinePath';
+import { CurvyPath } from './CurvyPath';
 import './styles.scss';
 
 const cases = [
@@ -18,18 +19,18 @@ cases.map((item) => {
   const s = document.querySelector(`.${item} .start`);
   const e = document.querySelector(`.${item} .end`);
 
-  new Arrow({
+  new CurvyPath({
     start: {
       element: s,
       position: {
-        top: 0,
-        left: 0,
+        top: 0.5,
+        left: 1,
       },
     },
     end: {
       element: e,
       position: {
-        top: 0,
+        top: 0.5,
         left: 0,
       },
     },
