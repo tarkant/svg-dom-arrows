@@ -45,6 +45,24 @@ export class LinePath {
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
 
+    const arrow = document.createElementNS(SVGNS, 'path');
+    const marker = document.createElementNS(SVGNS, 'marker');
+    const defs = document.createElementNS(SVGNS, 'defs');
+    arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+    arrow.setAttribute('style', 'fill:#3737c8;stroke-width:0.801524;stroke-miterlimit:4;stroke-dasharray:none');
+
+    marker.setAttribute('id', 'marker1');
+    marker.setAttribute('refX', '5');
+    marker.setAttribute('refY', '5');
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('orient', 'auto-start-reverse');
+    marker.setAttribute('markerWidth', '6');
+    marker.setAttribute('markerHeight', '6');
+    marker.appendChild(arrow);
+
+    defs.setAttribute('id', 'defs1');
+    defs.appendChild(marker);
+
     if (this.options.appendTo) {
       this.options.appendTo.appendChild(this.containerDiv);
     }
@@ -61,7 +79,8 @@ export class LinePath {
       this.containerDiv.classList.add('debug');
     }
 
-    this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
+    this.svgElement.appendChild(defs);
+    this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent;marker-end:url(#marker1);marker-start:url(#marker1)');
   }
 
   public release() {
@@ -92,7 +111,7 @@ export class LinePath {
   }
 
   svgPath(points: Point[]): string {
-    return `M ${points[0].x},${points[0].y} ${points[3].x},${points[3].y}`;
+    return `M ${points[0].x},${points[0].y} ${points[1].x},${points[1].y}`;
   };
 
   setSvgAttrs() {
