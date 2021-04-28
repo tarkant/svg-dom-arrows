@@ -7,17 +7,17 @@ export class LinePath {
   /**
    * The main SVG element. You can reuse it if needed.
    */
-  public svgElement: SVGSVGElement;
+  protected svgElement: SVGSVGElement;
 
   /**
    * The path line drawn in the SVG, this will be appended automatically to `svgPath`.
    */
-  public svgPathLine: SVGPathElement;
+  protected svgPathLine: SVGPathElement;
 
-  public containerDiv: HTMLDivElement;
-  public startBbox: DOMRect;
-  public endBbox: DOMRect;
-  public options: ArrowOptions;
+  protected containerDiv: HTMLDivElement;
+  protected startBbox: DOMRect;
+  protected endBbox: DOMRect;
+  protected options: ArrowOptions;
 
   constructor(options: ArrowOptions, debug = false) {
     this.options = options;
