@@ -144,8 +144,8 @@ export class LinePath {
     this.containerDiv.style.width = `${width}px`;
     this.containerDiv.style.height = `${height}px`;
 
-    this.containerDiv.style.top = `${top}px`;
-    this.containerDiv.style.left = `${left}px`;
+    this.containerDiv.style.top = `${top + window.pageYOffset}px`;
+    this.containerDiv.style.left = `${left + window.pageXOffset}px`;
   }
 
   getSVGProportions() {
