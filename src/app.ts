@@ -1,5 +1,6 @@
 import { LinePath } from './LinePath';
 import { CurvyPath } from './CurvyPath';
+import { ArcPath } from './ArcPath';
 import './styles.scss';
 
 const cases = [
@@ -19,18 +20,18 @@ cases.map((item) => {
   const s = document.querySelector(`.${item} .start`);
   const e = document.querySelector(`.${item} .end`);
 
-  new CurvyPath({
+  new ArcPath({
     start: {
       element: s,
       position: {
-        top: 0.5,
+        top: 1,
         left: 1,
       },
     },
     end: {
       element: e,
       position: {
-        top: 0.5,
+        top: 0,
         left: 0,
       },
     },
