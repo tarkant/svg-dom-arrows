@@ -1,5 +1,5 @@
 import { LinePath } from './LinePath';
-import { PathOptions, Point } from '../models';
+import { PathOptions, Point } from './../models';
 
 export class CurvyPath extends LinePath {
 

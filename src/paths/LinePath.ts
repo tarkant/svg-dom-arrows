@@ -1,5 +1,5 @@
-import { SVGNS } from '../consts/Constants';
-import { PathOptions, Point } from '../models';
+import { SVGNS } from './../consts/Constants';
+import { PathOptions, Point, RenderOutput } from './../models';
 
 export class LinePath {
 
@@ -14,6 +14,7 @@ export class LinePath {
   protected svgPathLine: SVGPathElement;
 
   protected containerDiv: HTMLDivElement;
+  protected defs: SVGDefsElement;
   protected startBbox: DOMRect;
   protected endBbox: DOMRect;
   protected options: PathOptions;
@@ -39,7 +40,7 @@ export class LinePath {
     }
   }
 
-  public render(debug = false) {
+  public render(debug = false): RenderOutput {
     this.containerDiv = document.createElement('div');
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
@@ -65,6 +66,13 @@ export class LinePath {
     }
 
     this.svgPathLine.setAttribute('style', this.options.style);
+
+    return {
+      container: this.containerDiv,
+      svg: this.svgElement,
+      path: this.svgPathLine,
+      defs: this.defs,
+    };
   }
 
   public release() {
@@ -96,14 +104,14 @@ export class LinePath {
 
   setPathMarkers() {
     if (this.options.markers.length > 0) {
-      const defs = document.createElementNS(SVGNS, 'defs');
+      this.defs = document.createElementNS(SVGNS, 'defs');
 
       this.options.markers.map(marker => {
-        defs.setAttribute('id', 'defs1');
-        defs.appendChild(marker);
+        this.defs.setAttribute('id', 'defs1');
+        this.defs.appendChild(marker);
       });
 
-      this.svgElement.appendChild(defs);
+      this.svgElement.appendChild(this.defs);
       if (this.options.start.markerId) {
         this.svgPathLine.setAttribute('marker-start', `url(${this.options.start.markerId})`);
       }
