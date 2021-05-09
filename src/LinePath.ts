@@ -45,26 +45,12 @@ export class LinePath {
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
 
-    const arrow = document.createElementNS(SVGNS, 'path');
-    const marker = document.createElementNS(SVGNS, 'marker');
-    const defs = document.createElementNS(SVGNS, 'defs');
-    arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
-    arrow.setAttribute('style', 'fill:#3737c8;stroke-width:0.801524;stroke-miterlimit:4;stroke-dasharray:none');
-
-    marker.setAttribute('id', 'marker1');
-    marker.setAttribute('refX', '5');
-    marker.setAttribute('refY', '5');
-    marker.setAttribute('viewBox', '0 0 10 10');
-    marker.setAttribute('orient', 'auto-start-reverse');
-    marker.setAttribute('markerWidth', '6');
-    marker.setAttribute('markerHeight', '6');
-    marker.appendChild(arrow);
-
-    defs.setAttribute('id', 'defs1');
-    defs.appendChild(marker);
-
     if (this.options.appendTo) {
       this.options.appendTo.appendChild(this.containerDiv);
+    }
+
+    if (this.options.markers) {
+      this.setPathMarkers();
     }
 
     this.containerDiv.appendChild(this.svgElement);
@@ -79,10 +65,7 @@ export class LinePath {
       this.containerDiv.classList.add('debug');
     }
 
-    this.svgElement.appendChild(defs);
     this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
-    this.svgPathLine.setAttribute('marker-end', 'url(#marker1)');
-    this.svgPathLine.setAttribute('marker-start', 'url(#marker1)');
   }
 
   public release() {
@@ -110,6 +93,25 @@ export class LinePath {
     ];
 
     return this.svgPath(points);
+  }
+
+  setPathMarkers() {
+    if (this.options.markers.length > 0) {
+      const defs = document.createElementNS(SVGNS, 'defs');
+
+      this.options.markers.map(marker => {
+        defs.setAttribute('id', 'defs1');
+        defs.appendChild(marker);
+      });
+
+      this.svgElement.appendChild(defs);
+      if (this.options.start.markerId) {
+        this.svgPathLine.setAttribute('marker-start', `url(${this.options.start.markerId})`);
+      }
+      if (this.options.end.markerId) {
+        this.svgPathLine.setAttribute('marker-end', `url(${this.options.end.markerId})`);
+      }
+    }
   }
 
   svgPath(points: Point[]): string {
