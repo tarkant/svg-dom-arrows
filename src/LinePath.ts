@@ -148,6 +148,7 @@ export class LinePath {
     this.containerDiv.style.width = `${width}px`;
     this.containerDiv.style.height = `${height}px`;
 
+    // Take into account the window.page(X|Y)Offset to avoid weird scroll issues
     this.containerDiv.style.top = `${top + window.pageYOffset}px`;
     this.containerDiv.style.left = `${left + window.pageXOffset}px`;
   }

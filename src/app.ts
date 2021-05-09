@@ -1,6 +1,7 @@
 import { LinePath } from './LinePath';
 import { CurvyPath } from './CurvyPath';
 import { ArcPath } from './ArcPath';
+import { SquarePath } from './SquarePath';
 import './styles.scss';
 import { SVGNS } from './consts/Constants';
 
@@ -40,7 +41,7 @@ cases.map((item) => {
   const s = document.querySelector(`.${item} .start`);
   const e = document.querySelector(`.${item} .end`);
 
-  new ArcPath({
+  new SquarePath({
     start: {
       element: s,
       position: {
