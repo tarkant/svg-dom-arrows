@@ -64,7 +64,7 @@ export class LinePath {
       this.containerDiv.classList.add('debug');
     }
 
-    this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
+    this.svgPathLine.setAttribute('style', this.options.style);
   }
 
   public release() {

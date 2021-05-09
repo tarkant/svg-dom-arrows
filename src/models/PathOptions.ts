@@ -3,6 +3,7 @@ import { SvgPather } from './Path';
 export interface PathOptions {
     start: PathDomElement;
     end: PathDomElement;
+    style: string;
     appendTo?: Element;
     manualRender?: boolean;
     svgPath?: SvgPather;
