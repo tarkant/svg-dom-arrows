@@ -1,27 +1,27 @@
 import { SvgPather } from './Path';
 
-export interface ArrowOptions {
-    start: ArrowDOMElement;
-    end: ArrowDOMElement;
+export interface PathOptions {
+    start: PathDOMElement;
+    end: PathDOMElement;
     appendTo?: Element;
     manualRender?: boolean;
     svgPath?: SvgPather;
 }
 
-export interface ArrowDOMElement {
+export interface PathDOMElement {
     /**
      * Any element you can select using `document.(getElementById | querySelector etc...)`
      */
     element: Element;
     /**
-     * Where you'd like that you arrow starts/ends in percent, by default it's 0,0
+     * Where you'd like that you Path starts/ends in percent, by default it's 0,0
      */
-    position?: ArrowPosition;
+    position?: PathPosition;
 }
 
-export interface ArrowPosition {
+export interface PathPosition {
     /**
-     * Where you'd like that you arrow starts/ends in percent, by default it's 0,0
+     * Where you'd like that you Path starts/ends in percent, by default it's 0,0
      */
     top: number;
     left: number;

@@ -1,10 +1,10 @@
 import { LinePath } from './LinePath';
-import { ArrowOptions } from './models/ArrowOptions';
+import { PathOptions } from './models/PathOptions';
 import { Point } from './models/Path';
 
 export class ArcPath extends LinePath {
 
-  constructor(options: ArrowOptions, debug = false) {
+  constructor(options: PathOptions, debug = false) {
     super(options, debug);
   }
 

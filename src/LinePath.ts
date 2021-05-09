@@ -1,5 +1,5 @@
 import { SVGNS } from './consts/Constants';
-import { ArrowOptions } from './models/ArrowOptions';
+import { PathOptions } from './models/PathOptions';
 import { Point } from './models/Path';
 
 export class LinePath {
@@ -17,9 +17,9 @@ export class LinePath {
   protected containerDiv: HTMLDivElement;
   protected startBbox: DOMRect;
   protected endBbox: DOMRect;
-  protected options: ArrowOptions;
+  protected options: PathOptions;
 
-  constructor(options: ArrowOptions, debug = false) {
+  constructor(options: PathOptions, debug = false) {
     this.options = options;
     this.startBbox = this.options.start.element.getBoundingClientRect();
     this.endBbox = this.options.end.element.getBoundingClientRect();
@@ -80,7 +80,9 @@ export class LinePath {
     }
 
     this.svgElement.appendChild(defs);
-    this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent;marker-end:url(#marker1);marker-start:url(#marker1)');
+    this.svgPathLine.setAttribute('style', 'stroke:white;stroke-width:4;fill:transparent');
+    this.svgPathLine.setAttribute('marker-end', 'url(#marker1)');
+    this.svgPathLine.setAttribute('marker-start', 'url(#marker1)');
   }
 
   public release() {
