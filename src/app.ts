@@ -1,7 +1,9 @@
-import { LinePath } from './LinePath';
-import { CurvyPath } from './CurvyPath';
-import { ArcPath } from './ArcPath';
-import { SquarePath } from './SquarePath';
+import {
+  SquarePath,
+  LinePath,
+  CurvyPath,
+  ArcPath,
+} from './paths';
 import './styles.scss';
 import { SVGNS } from './consts/Constants';
 

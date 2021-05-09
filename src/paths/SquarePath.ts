@@ -1,8 +1,7 @@
 import { LinePath } from './LinePath';
-import { PathOptions } from './models/PathOptions';
-import { Point } from './models/Path';
+import { PathOptions, Point } from '../models';
 
-export class CurvyPath extends LinePath {
+export class SquarePath extends LinePath {
 
   constructor(options: PathOptions, debug = false) {
     super(options, debug);
@@ -29,14 +28,10 @@ export class CurvyPath extends LinePath {
       ...(
         width > height
           ? [
-            {x:startX, y: Math.abs(startY - (startY + endY)*.5)},
             {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-            {x:endX, y: Math.abs(startY - (startY + endY)*.5)}
           ]
           : [
-            {x:Math.abs(startX - (startX + endX)*.5), y: startY},
             {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-            {x:Math.abs(startX - (startX + endX)*.5), y:endY}
           ]
       ),
 
@@ -48,9 +43,10 @@ export class CurvyPath extends LinePath {
 
   svgPath(points: Point[]): string {
     return `
-    M ${points[0].x},${points[0].y} 
-    C ${points[1].x},${points[1].y} ${points[1].x},${points[1].y} ${points[2].x},${points[2].y}
-    C ${points[3].x},${points[3].y} ${points[3].x},${points[3].y} ${points[4].x},${points[4].y}
+    M ${points[0].x},${points[0].y}
+    H ${points[1].x}
+    V ${points[2].y}
+    H ${points[2].x}
     `;
   };
 }

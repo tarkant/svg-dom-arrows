@@ -1,6 +1,6 @@
 import { LinePath } from './LinePath';
-import { PathOptions } from './models/PathOptions';
-import { Point } from './models/Path';
+import { PathOptions } from '../models/PathOptions';
+import { Point } from '../models/Path';
 
 export class ArcPath extends LinePath {
 

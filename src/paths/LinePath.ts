@@ -1,6 +1,5 @@
-import { SVGNS } from './consts/Constants';
-import { PathOptions } from './models/PathOptions';
-import { Point } from './models/Path';
+import { SVGNS } from '../consts/Constants';
+import { PathOptions, Point } from '../models';
 
 export class LinePath {
 
