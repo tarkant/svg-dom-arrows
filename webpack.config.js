@@ -46,7 +46,7 @@ const config = {
 
 module.exports = (env, argv) => {
   if (argv.mode === 'production') {
-    config.entry.app = './src/paths/index.ts';
+    config.entry.app = './src/index.ts';
     config.output.filename = 'main.js';
     config.output.libraryTarget = 'umd';
     config.output.library = 'SvgDomArrows';

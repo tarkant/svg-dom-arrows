@@ -9,9 +9,11 @@
     "DOM"
   ],
   "main": "dist/main.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "start": "webpack serve --mode development --port 3000",
-    "build": "webpack --mode production",
+    "build": "tsc --build ./tsconfig.build.json && webpack --mode production",
     "lint": "eslint src/*.ts --fix"
   },
   "author": "Tarek Jellali",
