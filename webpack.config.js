@@ -2,7 +2,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const config = {
   context: __dirname,
   entry: {
     app: './src/app.ts'
@@ -42,4 +42,17 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
   }
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'production') {
+    config.entry.app = './src/paths/index.ts';
+    config.output.filename = 'main.js';
+    config.output.libraryTarget = 'umd';
+    config.output.library = 'SvgDomArrows';
+    config.output.umdNamedDefine = true;
+    config.output.globalObject = 'this';
+    config.plugins = [];
+  }
+  return config;
 };

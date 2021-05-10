@@ -4,8 +4,10 @@ import {
   CurvyPath,
   ArcPath,
 } from './paths';
-import './styles.scss';
+
+
 import { SVGNS } from './consts/Constants';
+import './styles.scss';
 
 const cases = [
   'case-1',

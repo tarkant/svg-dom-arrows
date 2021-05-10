@@ -8,10 +8,10 @@
     "svg",
     "DOM"
   ],
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "start": "webpack serve --mode development --port 3000",
-    "build": "tsc",
+    "build": "webpack --mode production",
     "lint": "eslint src/*.ts --fix"
   },
   "author": "Tarek Jellali",
