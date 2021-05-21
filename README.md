@@ -43,15 +43,16 @@ Below a screenshot resulting from the code:
 
 ![line-path-example](./images/line-path-example.png)
 
-You can fiddle around with the code in this Codepen.
+Below some demos using vanilla TS/JS and other frameworks/
 
 ### Demos ✨
 
 You can checkout some demos here with few libs and frameworks so you can get yourself started with the implementation. In a way, `svg-dom-arrows` will work with anything, it has no dependencies and just uses plain DOM elements. But just in case, I've tried it with Angular, Vue and React as you can see below:
 
+* [Vanilla demo](https://stackblitz.com/edit/svg-dom-arrows-demo?file=index.ts)
 * [Angular Demo](https://stackblitz.com/edit/svg-arrow-dom-angular?file=src/app/arrow.demo/arrow.demo.component.ts)
-* [Vue Demo]
-* [React Demo]
+* [Vue Demo](https://stackblitz.com/edit/svg-dom-arrow-vue?file=src/components/ArrowDemo.vue)
+* [React Demo](https://stackblitz.com/edit/svg-dom-arrows-react?file=src/ArrowDemo.js)
 
 ### Positionning ➕
 
