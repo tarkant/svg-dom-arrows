@@ -52,7 +52,7 @@ You can checkout some demos here with few libs and frameworks so you can get you
 * [Vanilla demo](https://stackblitz.com/edit/svg-dom-arrows-demo?file=index.ts)
 * [Angular Demo](https://stackblitz.com/edit/svg-arrow-dom-angular?file=src/app/arrow.demo/arrow.demo.component.ts)
 * [Vue Demo](https://stackblitz.com/edit/svg-dom-arrow-vue?file=src/components/ArrowDemo.vue)
-* [React Demo](https://stackblitz.com/edit/svg-dom-arrows-react?file=src/ArrowDemo.js)
+* [React Demo](https://stackblitz.com/edit/svg-dom-arrows-react-h2dg88?file=src/ArrowDemo.js)
 
 ### Positionning ➕
 
