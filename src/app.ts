@@ -41,11 +41,13 @@ const createMarker  = (): SVGMarkerElement => {
   return marker;
 };
 
+const arrows: LinePath[] = [];
+
 cases.map((item) => {
   const s = document.querySelector(`.${item} .start`);
   const e = document.querySelector(`.${item} .end`);
 
-  new SquarePath({
+  arrows.push(new LinePath({
     start: {
       element: s,
       position: {
@@ -65,5 +67,40 @@ cases.map((item) => {
     style: 'stroke:white;stroke-width:4;fill:transparent',
     appendTo: document.body,
     markers: [createMarker()],
-  }, true);
+  }, false));
 });
+
+/* const s = document.querySelector('.case-1');
+const e = document.querySelector('.case-4');
+const line = new LinePath({
+  start: {
+    element: s,
+    position: {
+      top: .45,
+      left: 1,
+    },
+    markerId: '#marker1',
+  },
+  end: {
+    element: e,
+    position: {
+      top: .5,
+      left: 0,
+    },
+    markerId: '#marker1',
+  },
+  style: 'stroke:white;stroke-width:4;fill:transparent',
+  appendTo: document.body,
+  markers: [createMarker()],
+}, true); */
+
+window.onresize = () => {
+  /* arrows.map((el, idx) => {
+    el.recalculate();
+  }); */
+  //line.recalculate();
+  // line.release();
+  // line.render(true);
+};
+
+console.log(arrows);

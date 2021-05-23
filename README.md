@@ -98,6 +98,95 @@ The `style` options will be copied directley to the SVG path's style attribute. 
 * `stroke-width:<number>` to set the thickness of your line.
 * `fill:transparent` to keep only the line and avoid having a default black color.
 
+You can find a lot of resources about styling your SVG path to suit your needs.
+
+### Markers ↗
+
+The API lets you add markers to your SVG path. Markers can be a path or a group, the API just expects an `SVGMarkerElement` with an ID attribute that it can then append to the defs.
+
+You just need to add the markerId for your start or end element and it will do the job, eg:
+
+```ts
+/**
+ * This function just returns an `SVGMarkerElement` that's already pre-styled and so on
+ */
+const createMarker  = (): SVGMarkerElement => {
+  const arrow = document.createElementNS(SVGNS, 'path');
+  const marker = document.createElementNS(SVGNS, 'marker');
+
+  arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+  arrow.setAttribute('style', 'fill:white;stroke-width:0.801524;stroke-miterlimit:4;stroke-dasharray:none');
+
+  marker.setAttribute('id', 'marker1'); // <== Make sure to set an id attribute
+  /**
+   * The below attributes and values are specific to this marker, you'll have to know how markers work
+   * to really do something fun. For now you'll have to deal with it manually but I might work on an SVG
+   * marker utility. 
+   */
+  marker.setAttribute('refX', '5');
+  marker.setAttribute('refY', '5');
+  marker.setAttribute('viewBox', '0 0 10 10');
+  marker.setAttribute('orient', 'auto-start-reverse'); // <== There is a trick here, be sure to read after the code snippet
+  marker.setAttribute('markerWidth', '6');
+  marker.setAttribute('markerHeight', '6');
+  marker.appendChild(arrow);
+
+  return marker;
+};
+
+const s = document.querySelector('.case-1');
+const e = document.querySelector('.case-4');
+const line = new LinePath({
+  start: {
+    element: s,
+    position: {
+      top: .45,
+      left: 1,
+    },
+    markerId: '#marker1', // <== We attribute the marker id for the start of the path
+  },
+  end: {
+    element: e,
+    position: {
+      top: .5,
+      left: 0,
+    },
+    markerId: '#marker1',  // <== We attribute the same marker to the end of the path
+  },
+  style: 'stroke:white;stroke-width:4;fill:transparent',
+  appendTo: document.body,
+  markers: [createMarker()], // Supply your markers as an array to this option
+}, true);
+```
+
+Below the result with an arrow going from the starting to ending divs with an arrow marker:
+
+![line-path-example-w-markers](./images/line-path-example-w-markers.png)
+
+As you can see, the marker orients itself correctley, this is due to `marker.setAttribute('orient', 'auto-start-reverse')` and how the path was drawn it the first place.
+
+To put it simply, you really need to know how markers work to make nice arrows. I'll follow up with a tool that may help solve this issue in the future hopefully! Of course, if you know a guy who knows a guy who knows how to deal with this, please tell them to chime in!
+
+### Other options 🐣
+
+You can checkout [PathOptions.ts](https://github.com/tarkant/svg-dom-arrows/blob/master/src/models/PathOptions.ts) to see what other options you can supply. The most useful for now is `manualRender` that if you set to true will **not** render your SVG. You'll have then to call `render()` to do it.
+
+## Adding another Path style 🔌
+
+Adding your own path style is pretty straightforward. The only *"drawback"* is that you'll have to do it in TypeScript. Anyway, let me walk you through how you can do this (I'll take `CurvyPath` as an example):
+
+1. Create your `CurvyPath.ts` file under `src/paths/`.
+2. Extend the `LinePath` class as it's your base class.
+3. Implement your own logic in `getPath()` and `svgPath()`.
+4. Export your `CurvyPath.ts` in the barrel file `src/paths/index.ts`.
+5. Done 🎉.
+
+To get ahold of how this all works, you can checkout [LinePath.ts](https://github.com/tarkant/svg-dom-arrows/blob/master/src/paths/LinePath.ts) which is your base class. It provides you with everything you need.
+
+And of course you can checkout the [/src/paths/](https://github.com/tarkant/svg-dom-arrows/tree/master/src/paths) folder to understand how extending the base class makes things easier.
+
+**Note ℹ:** The only thing you need to respect is to use `PathOptions.ts` to keep the API consistent. If you need to add options, please add them as optional properties.
+
 ## 💻 How to run the developement server ?
 
 Easy, run this command and your server will be on `http://localhost/3000`:
@@ -112,6 +201,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.0.1: Documented the code, added `SvgProportions` type, `recalculate()` method, and improved readme.
 - v2.0.1: Fixed issue with typings not being packaged.
 - v2.0.0a: Rewrote from the ground up the full API and implementation.
 - v1.0.0: Forked and improved from [sasza2/arrows](https://github.com/sasza2/arrows)
