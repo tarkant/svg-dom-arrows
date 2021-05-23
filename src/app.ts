@@ -70,37 +70,12 @@ cases.map((item) => {
   }, false));
 });
 
-/* const s = document.querySelector('.case-1');
-const e = document.querySelector('.case-4');
-const line = new LinePath({
-  start: {
-    element: s,
-    position: {
-      top: .45,
-      left: 1,
-    },
-    markerId: '#marker1',
-  },
-  end: {
-    element: e,
-    position: {
-      top: .5,
-      left: 0,
-    },
-    markerId: '#marker1',
-  },
-  style: 'stroke:white;stroke-width:4;fill:transparent',
-  appendTo: document.body,
-  markers: [createMarker()],
-}, true); */
-
+/**
+ * Example to recalclate paths on every window.onresize event
+ */
 window.onresize = () => {
-  /* arrows.map((el, idx) => {
+  arrows.map((el, idx) => {
     el.recalculate();
-  }); */
-  //line.recalculate();
-  // line.release();
-  // line.render(true);
+  });
 };
 
-console.log(arrows);
