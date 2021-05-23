@@ -201,7 +201,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
-- v2.0.1: Documented the code, added `SvgProportions` type, `recalculate()` method, and improved readme.
+- v2.0.2: Documented the code, added `SvgProportions` type, `recalculate()` method, and improved readme.
 - v2.0.1: Fixed issue with typings not being packaged.
 - v2.0.0a: Rewrote from the ground up the full API and implementation.
 - v1.0.0: Forked and improved from [sasza2/arrows](https://github.com/sasza2/arrows)
