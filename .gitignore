@@ -1,3 +1,6 @@
 ﻿node_modules
 .vscode
 dist
+/test-results/
+/playwright-report/
+/playwright/.cache/
