@@ -25,8 +25,6 @@ const options: PathOptions = {
 const arrow = new LinePath(options);
 
 test('[LinePath] basic usage', () => {
-  console.log(arrow.getPath());
-  console.log(start.outerHTML);
+  console.log(arrow);
   expect(arrow !== undefined) ;
 });
-
