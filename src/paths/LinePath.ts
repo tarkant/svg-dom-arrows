@@ -106,6 +106,7 @@ export class LinePath {
     if (debug) {
       this.svgElement.style.background = 'rgba(128,0,0,.2)';
       this.containerDiv.classList.add('debug');
+      this.containerDiv.style.background = 'rgba(128,128,0,.2)';
     }
 
     this.svgPathLine.setAttribute('style', this.options.style);
