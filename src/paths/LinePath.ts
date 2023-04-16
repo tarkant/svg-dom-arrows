@@ -239,7 +239,7 @@ export class LinePath {
     this.containerDiv.style.height = `${height}px`;
 
     // Take into account the appendTo element's offset for correct positioning
-    if (this.options.appendTo) {
+    if (this.options.appendTo && this.options.appendTo !== document.body) {
       const offsetYAppended = this.options.appendTo.getBoundingClientRect().y;
       const offsetXAppended = this.options.appendTo.getBoundingClientRect().x;
       this.containerDiv.style.top = `${top - offsetYAppended}px`;
