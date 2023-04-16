@@ -121,7 +121,7 @@ const createMarker  = (): SVGMarkerElement => {
   /**
    * The below attributes and values are specific to this marker, you'll have to know how markers work
    * to really do something fun. For now you'll have to deal with it manually but I might work on an SVG
-   * marker utility. 
+   * marker utility.
    */
   marker.setAttribute('refX', '5');
   marker.setAttribute('refY', '5');
@@ -201,6 +201,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.0.4-beta.1: Fixed issue [#27](https://github.com/tarkant/svg-dom-arrows/issues/27) related to positioning relatively to the appendTo element.
 - v2.0.2: Documented the code, added `SvgProportions` type, `recalculate()` method, and improved readme.
 - v2.0.1: Fixed issue with typings not being packaged.
 - v2.0.0a: Rewrote from the ground up the full API and implementation.
