@@ -8,3 +8,7 @@ node_modules
 tsconfig.build.json
 tsconfig.json
 webpack.config.js
+tests
+images
+playwright-report
+playwright.config.ts
