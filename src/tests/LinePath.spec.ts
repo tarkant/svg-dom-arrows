@@ -1,4 +1,4 @@
-/*import { LinePath } from './../paths/LinePath';
+import { LinePath } from './../paths/LinePath';
 import { PathOptions } from '../models/PathOptions';
 import { JSDOM } from 'jsdom';
 
@@ -29,17 +29,4 @@ test('[LinePath] basic usage', () => {
   console.log(start.outerHTML);
   expect(arrow !== undefined) ;
 });
-*/
-describe('Google', async () => {
 
-  await jestPuppeteer.debug();
-
-  beforeAll(async () => {
-    await page.goto('https://google.com')
-  });
-
-  it('should display "google" text on page', async () => {
-    await expect(page).toMatch('google')
-  });
-
-});
