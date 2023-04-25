@@ -106,6 +106,7 @@ export class LinePath {
     if (debug) {
       this.svgElement.style.background = 'rgba(128,0,0,.2)';
       this.containerDiv.classList.add('debug');
+      this.containerDiv.style.background = 'rgba(128,128,0,.2)';
     }
 
     this.svgPathLine.setAttribute('style', this.options.style);
@@ -237,9 +238,17 @@ export class LinePath {
     this.containerDiv.style.width = `${width}px`;
     this.containerDiv.style.height = `${height}px`;
 
-    // Take into account the window.page(X|Y)Offset to avoid weird scroll issues
-    this.containerDiv.style.top = `${top + window.pageYOffset}px`;
-    this.containerDiv.style.left = `${left + window.pageXOffset}px`;
+    // Take into account the appendTo element's offset for correct positioning
+    if (this.options.appendTo && this.options.appendTo !== document.body) {
+      const offsetYAppended = this.options.appendTo.getBoundingClientRect().y;
+      const offsetXAppended = this.options.appendTo.getBoundingClientRect().x;
+      this.containerDiv.style.top = `${top - offsetYAppended}px`;
+      this.containerDiv.style.left = `${left - offsetXAppended}px`;
+    } else {
+      // Take into account the window.page(X|Y)Offset to avoid weird scroll issues
+      this.containerDiv.style.top = `${top + window.pageYOffset}px`;
+      this.containerDiv.style.left = `${left + window.pageXOffset}px`;
+    }
   }
 
   /**
