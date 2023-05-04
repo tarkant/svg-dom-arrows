@@ -201,8 +201,8 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
-- v2.0.5: e2e tests + fixed issue [#29](https://github.com/tarkant/svg-dom-arrows/issues/29) with typings not being bundled after the build thanks to @Flambe
-- v2.0.4: Fixed issue [#27](https://github.com/tarkant/svg-dom-arrows/issues/27) related to positioning relatively to the appendTo element + fixed unit tests.
+- v2.0.5: e2e tests + fixed issue [#29](https://github.com/tarkant/svg-dom-arrows/issues/29) with typings not being bundled after the build thanks to [@Flambe](https://github.com/Flambe).
+- v2.0.4: Fixed issue [#27](https://github.com/tarkant/svg-dom-arrows/issues/27) related to positioning relatively to the appendTo element + fixed unit tests thanks to [@jan-dolejsi](https://github.com/jan-dolejsi).
 - v2.0.4-beta.1: Fixed issue [#27](https://github.com/tarkant/svg-dom-arrows/issues/27) related to positioning relatively to the appendTo element.
 - v2.0.2: Documented the code, added `SvgProportions` type, `recalculate()` method, and improved readme.
 - v2.0.1: Fixed issue with typings not being packaged.
