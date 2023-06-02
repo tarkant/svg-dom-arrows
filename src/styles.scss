@@ -38,21 +38,21 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         top: 4rem;
         left: 2rem;
     }
-    
+
     .end {
         top: 16rem;
         left: 10rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -65,21 +65,21 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         top: 2rem;
         left: 18rem;
     }
-    
+
     .end {
         top: 16rem;
         left: 4rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -92,21 +92,21 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         top: 16rem;
         left: 3rem;
     }
-    
+
     .end {
         top: 2rem;
         left: 15rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -119,21 +119,21 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         top: 14rem;
         left: 18rem;
     }
-    
+
     .end {
         top: 2rem;
         left: 2rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -146,7 +146,7 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         width: 8rem;
         height: 4rem;
@@ -154,16 +154,16 @@ body {
         top: 4rem;
         left: 2rem;
     }
-    
+
     .end {
         top: 16rem;
         left: 16rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -176,12 +176,12 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         top: 4rem;
         left: 2rem;
     }
-    
+
     .end {
         width: 8rem;
         height: 4rem;
@@ -189,11 +189,11 @@ body {
         top: 16rem;
         left: 14rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -206,12 +206,12 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         top: 14rem;
         left: 16rem;
     }
-    
+
     .end {
         width: 8rem;
         height: 4rem;
@@ -219,11 +219,11 @@ body {
         top: 4rem;
         left: 4rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -236,24 +236,24 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         width: 8rem;
         height: 4rem;
-        
+
         top: 14rem;
         left: 12rem;
     }
-    
+
     .end {
         top: 4rem;
         left: 2rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -266,24 +266,24 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
+
     .start {
         width: 4rem;
         height: 8rem;
-        
+
         top: 4rem;
         left: 2rem;
     }
-    
+
     .end {
         top: 16rem;
         left: 14rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
     .gray {
         background-color: #888;
     }
@@ -296,12 +296,12 @@ body {
         position: absolute;
         opacity: .5;
     }
-    
-    .start {        
+
+    .start {
         top: 4rem;
         left: 2rem;
     }
-    
+
     .end {
         width: 4rem;
         height: 8rem;
@@ -309,11 +309,38 @@ body {
         top: 14rem;
         left: 14rem;
     }
-    
+
     .green {
         background-color: #BADA55;
     }
-    
+
+    .gray {
+        background-color: #888;
+    }
+}
+
+.case-11 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+
+    .end {
+        top: 8rem;
+        left: 14rem;
+    }
+    .start {
+        top: 8rem;
+        left: 4rem;
+    }
+
+    .green {
+        background-color: #BADA55;
+    }
+
     .gray {
         background-color: #888;
     }
