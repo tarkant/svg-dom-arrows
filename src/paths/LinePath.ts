@@ -264,8 +264,8 @@ export class LinePath {
 
     return {
       // Width of the svg - the starting position offset * the size + the ending position offset * size
-      width: Math.abs(x1 - x2),
-      height: Math.abs(y1 - y2),
+      width: Math.abs(x1 - x2) + 1,
+      height: Math.abs(y1 - y2) + 1,
       start: {
         x: x1,
         y: y1
