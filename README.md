@@ -201,6 +201,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.0.8 : npm audit fixes + test new github action
 - v2.0.7 : Fixed issue [#30](https://github.com/tarkant/svg-dom-arrows/issues/30) reported by [@Flambe](https://github.com/Flambe) related to the besier behavior on small offsets + added github action for auto npm publish 🎉
 - v2.0.7-beta.1 : Fixed issue [#30](https://github.com/tarkant/svg-dom-arrows/issues/30) reported by [@Flambe](https://github.com/Flambe) related to the besier behavior on small offsets
 - v2.0.6 : Fixed issue [#31](https://github.com/tarkant/svg-dom-arrows/issues/31) reported by [@Flambe](https://github.com/Flambe).
