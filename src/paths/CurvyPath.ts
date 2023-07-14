@@ -2,7 +2,6 @@ import { LinePath } from './LinePath';
 import { PathOptions, Point } from './../models';
 
 export class CurvyPath extends LinePath {
-
   constructor(options: PathOptions, debug = false) {
     super(options, debug);
   }
@@ -17,29 +16,21 @@ export class CurvyPath extends LinePath {
   getPath(): string {
     const { width, height, start, end } = this.getSVGProportions();
 
-    const startX = start.x > end.x ? width: 0;
+    const startX = start.x > end.x ? width : 0;
     const startY = start.y > end.y ? height : 0;
     const endX = width - startX;
     const endY = height - startY;
 
     const points = [
-      {x: startX, y: startY},
+      { x: startX, y: startY },
 
-      ...(
-        width > height
-          ? [
-            {x:startX, y: Math.abs(startY - (startY + endY)*.5)},
-            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-            {x:endX, y: Math.abs(startY - (startY + endY)*.5)}
-          ]
-          : [
-            {x:Math.abs(startX - (startX + endX)*.5), y: startY},
-            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-            {x:Math.abs(startX - (startX + endX)*.5), y:endY}
-          ]
-      ),
+      ...[
+        { x: Math.abs(startX - (startX + endX) * 0.5), y: startY },
+        { x: Math.abs(startX - (startX + endX) * 0.5), y: Math.abs(startY - (startY + endY) * 0.5) }, // center
+        { x: Math.abs(startX - (startX + endX) * 0.5), y: endY },
+      ],
 
-      {x: endX, y: endY}
+      { x: endX, y: endY },
     ];
 
     return this.svgPath(points);
@@ -47,9 +38,9 @@ export class CurvyPath extends LinePath {
 
   svgPath(points: Point[]): string {
     return `
-    M ${points[0].x},${points[0].y} 
+    M ${points[0].x},${points[0].y}
     C ${points[1].x},${points[1].y} ${points[1].x},${points[1].y} ${points[2].x},${points[2].y}
     C ${points[3].x},${points[3].y} ${points[3].x},${points[3].y} ${points[4].x},${points[4].y}
     `;
-  };
+  }
 }

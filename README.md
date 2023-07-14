@@ -201,6 +201,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.0.7-beta.1 : Fixed issue [#30](https://github.com/tarkant/svg-dom-arrows/issues/30) reported by [@Flambe](https://github.com/Flambe) related to the besier behavior on small offsets
 - v2.0.6 : Fixed issue [#31](https://github.com/tarkant/svg-dom-arrows/issues/31) reported by [@Flambe](https://github.com/Flambe).
 - v2.0.6-beta.1 : Fixed issue [#31](https://github.com/tarkant/svg-dom-arrows/issues/31) reported by [@Flambe](https://github.com/Flambe).
 - v2.0.5: e2e tests + fixed issue [#29](https://github.com/tarkant/svg-dom-arrows/issues/29) with typings not being bundled after the build thanks to [@Flambe](https://github.com/Flambe).

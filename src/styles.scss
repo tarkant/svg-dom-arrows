@@ -346,6 +346,33 @@ body {
     }
 }
 
+.case-12 {
+    .box {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        position: absolute;
+        opacity: .5;
+    }
+
+    .end {
+        top: 8rem;
+        left: 14rem;
+    }
+    .start {
+        top: 4rem;
+        left: 4rem;
+    }
+
+    .green {
+        background-color: #BADA55;
+    }
+
+    .gray {
+        background-color: #888;
+    }
+}
+
 .debug {
     border: solid 1px red;
 }
