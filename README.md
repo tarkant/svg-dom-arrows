@@ -156,6 +156,13 @@ const line = new LinePath({
   style: 'stroke:white;stroke-width:4;fill:transparent',
   appendTo: document.body,
   markers: [createMarker()], // Supply your markers as an array to this option
+  // Custom CSS classes that you can add for additional styling
+  // CSS classes should be as follows: `foo bar baz` and NOT `.foo.bar.baz`
+  customClass: {
+    container: `container-${idx} foo bar`,
+    svgPath: `path-${idx} baz`,
+    svgElement: `element-${idx}`,
+  }
 }, true);
 ```
 
@@ -201,6 +208,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.1.0-beta.1 : Added the option to set custom CSS classes for the div container, svg element and svg path as suggested by [@rbozan](https://github.com/rbozan) in [#32](https://github.com/tarkant/svg-dom-arrows/issues/32) and [#33](https://github.com/tarkant/svg-dom-arrows/issues/33)
 - v2.0.8 : npm audit fixes + test new github action
 - v2.0.7 : Fixed issue [#30](https://github.com/tarkant/svg-dom-arrows/issues/30) reported by [@Flambe](https://github.com/Flambe) related to the besier behavior on small offsets + added github action for auto npm publish 🎉
 - v2.0.7-beta.1 : Fixed issue [#30](https://github.com/tarkant/svg-dom-arrows/issues/30) reported by [@Flambe](https://github.com/Flambe) related to the besier behavior on small offsets
