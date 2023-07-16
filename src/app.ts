@@ -44,11 +44,11 @@ const createMarker  = (): SVGMarkerElement => {
 
 const arrows: LinePath[] = [];
 
-cases.map((item) => {
+cases.map((item, idx) => {
   const s = document.querySelector(`.${item} .start`);
   const e = document.querySelector(`.${item} .end`);
 
-  arrows.push(new LinePath({
+  arrows.push(new CurvyPath({
     start: {
       element: s,
       position: {
@@ -68,8 +68,15 @@ cases.map((item) => {
     style: 'stroke:white;stroke-width:4;fill:transparent',
     appendTo: document.body,
     markers: [createMarker()],
+    customClass: {
+      container: `container-${idx} foo bar`,
+      svgPath: `path-${idx} baz`,
+      svgElement: `element-${idx}`,
+    }
   }, false));
 });
+
+console.log(arrows);
 
 /**
  * Example to recalclate paths on every window.onresize event

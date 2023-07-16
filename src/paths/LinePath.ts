@@ -88,6 +88,10 @@ export class LinePath {
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
 
+    if (this.options.customClass) {
+      this.setCustomClass();
+    }
+
     if (this.options.appendTo) {
       this.options.appendTo.appendChild(this.containerDiv);
     }
@@ -277,5 +281,18 @@ export class LinePath {
       top: y1 < y2 ? this.options.start.position.offsetY : this.options.end.position.offsetY,
       left: x1 < x2 ? this.options.start.position.offsetX : this.options.end.position.offsetX
     };
+  }
+
+  /**
+   * Set custom CSS classes according to the dev's options
+   * use `classList.add()` to simply add the classes if necessary
+   * Assuming the user will enter the class list separated with white spaces, things will
+   * go smoothly.
+   */
+  setCustomClass() {
+    const { container, svgElement, svgPath } = this.options.customClass;
+    container && this.containerDiv.classList.add(...container.split(' '));
+    svgElement && this.svgElement.classList.add(...svgElement.split(' '));
+    svgPath && this.svgPathLine.classList.add(...svgPath.split(' '));
   }
 }

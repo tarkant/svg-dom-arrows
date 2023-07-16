@@ -11,6 +11,19 @@ export interface PathOptions {
      * List of SVG markers to be added to the SVG defs
      */
     markers?: SVGMarkerElement[];
+    /**
+     * Custom CSS class for the following items:
+     * - The `div` representing the container element
+     * - The `path` representing the SVG path
+     * - The `svg` tag containing all the SVG
+     * CSS classes must be added like in the markup:
+     * eg. `foo bar baz` and **NOT** `.foo.bar.baz`
+     */
+    customClass?: {
+      container?: string;
+      svgPath?: string;
+      svgElement?: string;
+    };
 }
 
 export interface PathDomElement {
