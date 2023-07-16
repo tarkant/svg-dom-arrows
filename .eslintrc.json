@@ -114,7 +114,7 @@
         "no-trailing-spaces": "error",
         "no-undef-init": "error",
         "no-underscore-dangle": "off",
-        "no-unused-expressions": "error",
+        "no-unused-expressions": ["error", { "allowShortCircuit": true }],
         "no-unused-labels": "error",
         "no-var": "error",
         "prefer-const": "error",
