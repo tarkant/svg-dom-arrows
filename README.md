@@ -41,7 +41,7 @@ Simple implementation:
 
 Below a screenshot resulting from the code:
 
-![line-path-example](./images/line-path-example.png)
+![line-path-example](https://github.com/tarkant/svg-dom-arrows/blob/master/images/line-path-example.png)
 
 Below some demos using vanilla TS/JS and other frameworks/
 
@@ -54,11 +54,11 @@ You can checkout some demos here with few libs and frameworks so you can get you
 * [Vue Demo](https://stackblitz.com/edit/svg-dom-arrow-vue?file=src/components/ArrowDemo.vue)
 * [React Demo](https://stackblitz.com/edit/svg-dom-arrows-react-h2dg88?file=src/ArrowDemo.js)
 
-### Positionning ➕
+### Positioning ➕
 
-Positionning is based on a left and top axis, below a simple visualization of how the axies are based on the element. 0 is at the left of the element, 1 would be at 100% left from the origin.
+Positioning is based on a left and top axis, below a simple visualization of how the axies are based on the element. 0 is at the left of the element, 1 would be at 100% left from the origin.
 
-![positionning-axis-guide](./images/positionning-guide.svg)
+![positioning-axis-guide](https://github.com/tarkant/svg-dom-arrows/blob/master/images/positioning-guide.svg)
 
 You might have noticed that the drawn path starts from position 0,0 of `myGreenBox` to 0,0 at `myGreyBox`. If no position is specified, the tool will assume you want it to start from 0,0. You can of course set the position as you like as follows:
 
@@ -86,13 +86,13 @@ You might have noticed that the drawn path starts from position 0,0 of `myGreenB
 
 The result would be as follows:
 
-![line-path-example-axis](./images/line-path-example-axis.png)
+![line-path-example-axis](https://github.com/tarkant/svg-dom-arrows/blob/master/images/line-path-example-axis.png)
 
 **ℹ Note:** 0 to 1 are the max values inside the BBox of the DOM element. This does not mean that you're limited to those values. You can experiment with negative values or < 1 values.
 
 ### Styling 🎨
 
-The `style` options will be copied directley to the SVG path's style attribute. This being an SVG, it's a little bit different than the usual CSS. Besides what's mostly imporant is that:
+The `style` options will be copied directly to the SVG path's style attribute. This being an SVG, it's a little bit different than the usual CSS. Besides what's mostly important is that:
 
 * `stroke:<color>` to set the color of the line.
 * `stroke-width:<number>` to set the thickness of your line.
@@ -168,7 +168,7 @@ const line = new LinePath({
 
 Below the result with an arrow going from the starting to ending divs with an arrow marker:
 
-![line-path-example-w-markers](./images/line-path-example-w-markers.png)
+![line-path-example-w-markers](https://github.com/tarkant/svg-dom-arrows/blob/master/images/line-path-example-w-markers.png)
 
 As you can see, the marker orients itself correctley, this is due to `marker.setAttribute('orient', 'auto-start-reverse')` and how the path was drawn it the first place.
 
@@ -194,7 +194,7 @@ And of course you can checkout the [/src/paths/](https://github.com/tarkant/svg-
 
 **Note ℹ:** The only thing you need to respect is to use `PathOptions.ts` to keep the API consistent. If you need to add options, please add them as optional properties.
 
-## 💻 How to run the developement server ?
+## 💻 How to run the development server ?
 
 Easy, run this command and your server will be on `http://localhost/3000`:
 
