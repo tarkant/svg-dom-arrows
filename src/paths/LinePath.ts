@@ -7,18 +7,18 @@ export class LinePath {
   /**
    * The main SVG element. You can reuse it if needed.
    */
-  protected svgElement: SVGSVGElement;
+  public svgElement: SVGSVGElement;
 
   /**
    * The path line drawn in the SVG, this will be appended automatically to `svgPath`.
    */
-  protected svgPathLine: SVGPathElement;
+  public svgPathLine: SVGPathElement;
 
   /**
-   * The div that will contain the svg, this is positionned in absolute relatively to the DOM element `appendTo`,
+   * The div that will contain the svg, this is positioned in absolute relatively to the DOM element `appendTo`,
    * This helps us position the SVG inside the div in absolute too.
    */
-  protected containerDiv: HTMLDivElement;
+  public containerDiv: HTMLDivElement;
 
   /**
    * The SVG's defs can contain gradient stops, markers and other stuff. In this case, we'll keep our marker(s)
@@ -53,7 +53,7 @@ export class LinePath {
     if(!options.end.position) {this.options.end.position = {top: 0, left: 0};}
 
     /**
-     * Offsets play a big role in knowing from where the path will effectivley start and end,
+     * Offsets play a big role in knowing from where the path will effectively start and end,
      * To make things easier for other classes extending this base, we calculate all this to
      * reduce complexity.
      */
@@ -76,9 +76,9 @@ export class LinePath {
 
   /**
    * If you want your path to adapt to the DOM changes, you'll have to call this function, it will recalculate
-   * the path and reappend it if needed.
+   * the path and re-append it if needed.
    * @param debug: boolean; Set this to true if you want to add a red box as a background,
-   * this can be helpful if you want to see if the SVG element is being correctley drawn without
+   * this can be helpful if you want to see if the SVG element is being correctly drawn without
    * fiddling with the DOM inspector all the time
    * @returns: RenderOutput; Calling this will return the new rendered container, svg, path and defs.
    * It might be useful for you to avoid dealing with async stuff for example.
@@ -131,7 +131,7 @@ export class LinePath {
     this.endBbox = this.options.end.element.getBoundingClientRect();
 
     /**
-     * Offsets play a big role in knowing from where the path will effectivley start and end,
+     * Offsets play a big role in knowing from where the path will effectively start and end,
      * To make things easier for other classes extending this base, we calculate all this to
      * reduce complexity.
      */
@@ -221,7 +221,7 @@ export class LinePath {
   }
 
   /**
-   * Sets the div attributes for the positionning and width/height
+   * Sets the div attributes for the positioning and width/height
    */
   setDivAttrs() {
     const width = Math.abs(

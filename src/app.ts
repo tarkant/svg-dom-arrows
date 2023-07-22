@@ -48,7 +48,7 @@ cases.map((item, idx) => {
   const s = document.querySelector(`.${item} .start`);
   const e = document.querySelector(`.${item} .end`);
 
-  arrows.push(new CurvyPath({
+  arrows.push(new LinePath({
     start: {
       element: s,
       position: {
