@@ -1,4 +1,6 @@
 .vscode
+.github
+.circleci
 src
 node_modules
 .editorconfig

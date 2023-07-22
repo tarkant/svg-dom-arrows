@@ -15,7 +15,7 @@
     "start": "webpack serve --mode development --port 3000",
     "build": "tsc --build ./tsconfig.build.json && webpack --mode production",
     "lint": "eslint src/*.ts --fix",
-    "test": "playwright test"
+    "test": "npx playwright test"
   },
   "author": "Tarek Jellali",
   "license": "MIT",
