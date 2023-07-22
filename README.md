@@ -1,4 +1,4 @@
-# 🏹 SVG DOM Arrows
+# 🏹 SVG DOM Arrows [![CircleCI](https://dl.circleci.com/status-badge/img/gh/tarkant/svg-dom-arrows/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/tarkant/svg-dom-arrows/tree/master)
 
 Draw an arrow from one HTML element to another with a simple API and 0 dependencies.
 
