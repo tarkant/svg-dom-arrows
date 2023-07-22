@@ -1,7 +1,7 @@
-import { LinePath } from './LinePath';
+import { Path } from './Path';
 import { PathOptions, Point } from './../models';
 
-export class CurvyPath extends LinePath {
+export class CurvyPath extends Path {
   constructor(options: PathOptions, debug = false) {
     super(options, debug);
   }

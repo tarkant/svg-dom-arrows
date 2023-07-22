@@ -170,7 +170,7 @@ Below the result with an arrow going from the starting to ending divs with an ar
 
 ![line-path-example-w-markers](https://github.com/tarkant/svg-dom-arrows/blob/master/images/line-path-example-w-markers.png)
 
-As you can see, the marker orients itself correctley, this is due to `marker.setAttribute('orient', 'auto-start-reverse')` and how the path was drawn it the first place.
+As you can see, the marker orients itself correctly, this is due to `marker.setAttribute('orient', 'auto-start-reverse')` and how the path was drawn it the first place.
 
 To put it simply, you really need to know how markers work to make nice arrows. I'll follow up with a tool that may help solve this issue in the future hopefully! Of course, if you know a guy who knows a guy who knows how to deal with this, please tell them to chime in!
 

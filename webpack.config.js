@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -5,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
   context: __dirname,
   entry: {
-    app: './src/app.ts'
+    app: './example/app.ts',
   },
   output: {
     filename: '[name].js',
@@ -20,30 +21,27 @@ const config = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      }, {
-        test: /\.(png|gif|jpg|jpeg|svg|xml)$/,
-        use: [ 'url-loader' ]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-    ]
+      {
+        test: /\.(png|gif|jpg|jpeg|svg|xml)$/,
+        use: ['url-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'example/index.html',
     }),
   ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
-    }
-  }
+    },
+  },
 };
 
 module.exports = (env, argv) => {
