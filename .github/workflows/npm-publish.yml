@@ -1,3 +1,5 @@
+name: Publish on npm and Github Packages
+
 on:
   push:
     branches: master
@@ -15,3 +17,20 @@ jobs:
       - uses: JS-DevTools/npm-publish@v2
         with:
           token: ${{ secrets.NPM_TOKEN }}
+  publish-gh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: node ./.github/gpr-hack.js
+      - run: npm ci
+      - run: npm run build
+      - uses: JS-DevTools/npm-publish@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: "https://npm.pkg.github.com"
