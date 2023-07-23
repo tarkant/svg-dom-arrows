@@ -208,6 +208,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.1.3 : Updated .npmignore rules + updated the CI + added github package publish
 - v2.1.2 : Exposed the SVG path, SVG element and div container + general tests fixes
 - v2.1.1 : Fix auto-publish github action
 - v2.1.0 : Added the option to set custom CSS classes for the div container, svg element and svg path as suggested by [@rbozan](https://github.com/rbozan) in [#32](https://github.com/tarkant/svg-dom-arrows/issues/32) and [#33](https://github.com/tarkant/svg-dom-arrows/issues/33)
