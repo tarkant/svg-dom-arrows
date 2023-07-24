@@ -2,8 +2,8 @@ import { Path } from './Path';
 import { PathOptions, Point } from './../models';
 
 export class CurvyPath extends Path {
-  constructor(options: PathOptions, debug = false) {
-    super(options, debug);
+  constructor(options: PathOptions) {
+    super(options);
   }
 
   /**

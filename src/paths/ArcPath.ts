@@ -3,8 +3,8 @@ import { PathOptions } from './../models/PathOptions';
 import { Point } from './../models/Path';
 
 export class ArcPath extends Path {
-  constructor(options: PathOptions, debug = false) {
-    super(options, debug);
+  constructor(options: PathOptions) {
+    super(options);
   }
 
   /**

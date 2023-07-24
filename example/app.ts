@@ -31,35 +31,32 @@ cases.map((item, idx) => {
   const e = document.querySelector(`.${item} .end`);
 
   arrows.push(
-    new LinePath(
-      {
-        start: {
-          element: s,
-          position: {
-            top: 0.5,
-            left: 1,
-          },
-          markerId: '#marker1',
+    new LinePath({
+      start: {
+        element: s,
+        position: {
+          top: 0.5,
+          left: 1,
         },
-        end: {
-          element: e,
-          position: {
-            top: 0.5,
-            left: 0,
-          },
-          markerId: '#marker1',
-        },
-        style: 'stroke:white;stroke-width:4;fill:transparent',
-        appendTo: document.body,
-        markers: [createMarker()],
-        customClass: {
-          container: `container-${idx} foo bar`,
-          svgPath: `path-${idx} baz`,
-          svgElement: `element-${idx}`,
-        },
+        markerId: '#marker1',
       },
-      false,
-    ),
+      end: {
+        element: e,
+        position: {
+          top: 0.5,
+          left: 0,
+        },
+        markerId: '#marker1',
+      },
+      style: 'stroke:white;stroke-width:4;fill:transparent',
+      appendTo: document.body,
+      markers: [createMarker()],
+      customClass: {
+        container: `container-${idx} foo bar`,
+        svgPath: `path-${idx} baz`,
+        svgElement: `element-${idx}`,
+      },
+    }),
   );
 });
 

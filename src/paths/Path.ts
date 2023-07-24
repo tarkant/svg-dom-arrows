@@ -42,7 +42,7 @@ export abstract class Path {
    */
   protected options: PathOptions;
 
-  constructor(options: PathOptions, debug = false) {
+  constructor(options: PathOptions) {
     this.options = Object.assign(options);
     this.startBbox = this.options.start.element.getBoundingClientRect();
     this.endBbox = this.options.end.element.getBoundingClientRect();
@@ -73,20 +73,17 @@ export abstract class Path {
      * Manual rendering might be useful for some cases.
      */
     if (!this.options.manualRender) {
-      this.render(debug);
+      this.render();
     }
   }
 
   /**
    * If you want your path to adapt to the DOM changes, you'll have to call this function, it will recalculate
-   * the path and re-append it if needed.
-   * @param debug: boolean; Set this to true if you want to add a red box as a background,
-   * this can be helpful if you want to see if the SVG element is being correctly drawn without
-   * fiddling with the DOM inspector all the time
+   * the path and reappend it if needed.
    * @returns: RenderOutput; Calling this will return the new rendered container, svg, path and defs.
    * It might be useful for you to avoid dealing with async stuff for example.
    */
-  public render(debug = false): RenderOutput {
+  public render(): RenderOutput {
     this.containerDiv = document.createElement('div');
     this.svgElement = document.createElementNS(SVGNS, 'svg');
     this.svgPathLine = document.createElementNS(SVGNS, 'path');
@@ -110,7 +107,7 @@ export abstract class Path {
 
     this.svgPathLine.setAttribute('d', this.getPath());
 
-    if (debug) {
+    if (this.options.debug) {
       this.svgElement.style.background = 'rgba(128,0,0,.2)';
       this.containerDiv.classList.add('debug');
       this.containerDiv.style.background = 'rgba(128,128,0,.2)';
