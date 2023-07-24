@@ -1,16 +1,32 @@
-import { SquarePath, LinePath, CurvyPath, ArcPath, Path } from '../src';
+import { LinePath, Path } from '../src';
 
 import { SVGNS } from '../src';
 import './styles.scss';
 
-const cases = ['case-1', 'case-2', 'case-3', 'case-4', 'case-5', 'case-6', 'case-7', 'case-8', 'case-9', 'case-10', 'case-11', 'case-12'];
+const cases = [
+  'case-1',
+  'case-2',
+  'case-3',
+  'case-4',
+  'case-5',
+  'case-6',
+  'case-7',
+  'case-8',
+  'case-9',
+  'case-10',
+  'case-11',
+  'case-12',
+];
 
 const createMarker = (): SVGMarkerElement => {
   const arrow = document.createElementNS(SVGNS, 'path');
   const marker = document.createElementNS(SVGNS, 'marker');
 
   arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
-  arrow.setAttribute('style', 'fill:white;stroke-width:0.801524;stroke-miterlimit:4;stroke-dasharray:none');
+  arrow.setAttribute(
+    'style',
+    'fill:white;stroke-width:0.801524;stroke-miterlimit:4;stroke-dasharray:none',
+  );
 
   marker.setAttribute('id', 'marker1');
   marker.setAttribute('refX', '5');

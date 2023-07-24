@@ -26,10 +26,16 @@ export class SquarePath extends Path {
 
       ...(width > height
         ? [
-            { x: Math.abs(startX - (startX + endX) * 0.5), y: Math.abs(startY - (startY + endY) * 0.5) }, // center
+            {
+              x: Math.abs(startX - (startX + endX) * 0.5),
+              y: Math.abs(startY - (startY + endY) * 0.5),
+            }, // center
           ]
         : [
-            { x: Math.abs(startX - (startX + endX) * 0.5), y: Math.abs(startY - (startY + endY) * 0.5) }, // center
+            {
+              x: Math.abs(startX - (startX + endX) * 0.5),
+              y: Math.abs(startY - (startY + endY) * 0.5),
+            }, // center
           ]),
 
       { x: endX, y: endY },

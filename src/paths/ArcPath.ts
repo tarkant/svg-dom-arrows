@@ -30,7 +30,10 @@ export class ArcPath extends Path {
          * X * Value = angle outgoing
          * Y * value = Angle entry
          **/
-        { x: Math.abs(startX - (startX + endX) * 0.2), y: Math.abs(startY - (startY + endY) * 0.6) },
+        {
+          x: Math.abs(startX - (startX + endX) * 0.2),
+          y: Math.abs(startY - (startY + endY) * 0.6),
+        },
       ],
 
       { x: endX, y: endY },

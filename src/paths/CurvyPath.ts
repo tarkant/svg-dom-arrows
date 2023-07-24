@@ -26,7 +26,10 @@ export class CurvyPath extends Path {
 
       ...[
         { x: Math.abs(startX - (startX + endX) * 0.5), y: startY },
-        { x: Math.abs(startX - (startX + endX) * 0.5), y: Math.abs(startY - (startY + endY) * 0.5) }, // center
+        {
+          x: Math.abs(startX - (startX + endX) * 0.5),
+          y: Math.abs(startY - (startY + endY) * 0.5),
+        }, // center
         { x: Math.abs(startX - (startX + endX) * 0.5), y: endY },
       ],
 

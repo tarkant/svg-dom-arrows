@@ -26,8 +26,8 @@ export interface PathOptions {
   };
   /**
    * Set this to true if you want to add a red box as a background,
-   * this can be helpful if you want to see if the SVG element is being correctley drawn without
-   * fiddling with the DOM inspector all the time
+   * this can be helpful if you want to see if the SVG element is being correctley drawn
+   * without fiddling with the DOM inspector all the time
    */
   debug?: boolean;
 }

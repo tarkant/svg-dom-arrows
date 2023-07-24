@@ -14,25 +14,30 @@ export abstract class Path {
   protected svgPathLine: SVGPathElement;
 
   /**
-   * The div that will contain the svg, this is positionned in absolute relatively to the DOM element `appendTo`,
+   * The div that will contain the svg, this is positionned in absolute relatively to the
+   * DOM element `appendTo`,
    * This helps us position the SVG inside the div in absolute too.
    */
   protected containerDiv: HTMLDivElement;
 
   /**
-   * The SVG's defs can contain gradient stops, markers and other stuff. In this case, we'll keep our marker(s)
-   * appended to those defs. This lets the developer add his own defs if needed for example.
+   * The SVG's defs can contain gradient stops, markers and other stuff. In this case,
+   * we'll keep our marker(s)
+   * appended to those defs. This lets the developer add his own defs if needed for
+   * example.
    */
   protected defs: SVGDefsElement;
 
   /**
-   * The starting element BBox that we get from `getBoundingClientRect()`. This is used to do the calculations
+   * The starting element BBox that we get from `getBoundingClientRect()`. This is used
+   * to do the calculations
    * needed to draw our path.
    */
   protected startBbox: DOMRect;
 
   /**
-   * The ending element BBox that we get from `getBoundingClientRect()`. This is used to do the calculations
+   * The ending element BBox that we get from `getBoundingClientRect()`. This is used to
+   * do the calculations
    * needed to draw our path.
    */
   protected endBbox: DOMRect;
@@ -56,14 +61,19 @@ export abstract class Path {
     }
 
     /**
-     * Offsets play a big role in knowing from where the path will effectivley start and end,
-     * To make things easier for other classes extending this base, we calculate all this to
-     * reduce complexity.
+     * Offsets play a big role in knowing from where the path will effectivley start and
+     * end,
+     * To make things easier for other classes extending this base, we calculate all this
+     * to reduce complexity.
      */
-    this.options.start.position.offsetX = this.options.start.position.left * this.startBbox.width;
-    this.options.start.position.offsetY = this.options.start.position.top * this.startBbox.height;
-    this.options.end.position.offsetX = this.options.end.position.left * this.endBbox.width;
-    this.options.end.position.offsetY = this.options.end.position.top * this.endBbox.height;
+    this.options.start.position.offsetX =
+      this.options.start.position.left * this.startBbox.width;
+    this.options.start.position.offsetY =
+      this.options.start.position.top * this.startBbox.height;
+    this.options.end.position.offsetX =
+      this.options.end.position.left * this.endBbox.width;
+    this.options.end.position.offsetY =
+      this.options.end.position.top * this.endBbox.height;
 
     if (options.svgPath) {
       this.svgPath = options.svgPath;
@@ -78,9 +88,11 @@ export abstract class Path {
   }
 
   /**
-   * If you want your path to adapt to the DOM changes, you'll have to call this function, it will recalculate
+   * If you want your path to adapt to the DOM changes,
+   * you'll have to call this function, it will recalculate
    * the path and reappend it if needed.
-   * @returns: RenderOutput; Calling this will return the new rendered container, svg, path and defs.
+   * @returns: RenderOutput; Calling this will return the new rendered container,
+   * svg, path and defs.
    * It might be useful for you to avoid dealing with async stuff for example.
    */
   public render(): RenderOutput {
@@ -131,14 +143,19 @@ export abstract class Path {
     this.endBbox = this.options.end.element.getBoundingClientRect();
 
     /**
-     * Offsets play a big role in knowing from where the path will effectivley start and end,
-     * To make things easier for other classes extending this base, we calculate all this to
-     * reduce complexity.
+     * Offsets play a big role in knowing from where the path will effectivley start and
+     * end,
+     * To make things easier for other classes extending this base, we calculate all this
+     * to reduce complexity.
      */
-    this.options.start.position.offsetX = this.options.start.position.left * this.startBbox.width;
-    this.options.start.position.offsetY = this.options.start.position.top * this.startBbox.height;
-    this.options.end.position.offsetX = this.options.end.position.left * this.endBbox.width;
-    this.options.end.position.offsetY = this.options.end.position.top * this.endBbox.height;
+    this.options.start.position.offsetX =
+      this.options.start.position.left * this.startBbox.width;
+    this.options.start.position.offsetY =
+      this.options.start.position.top * this.startBbox.height;
+    this.options.end.position.offsetX =
+      this.options.end.position.left * this.endBbox.width;
+    this.options.end.position.offsetY =
+      this.options.end.position.top * this.endBbox.height;
 
     this.svgPathLine.setAttribute('d', this.getPath());
     this.setDivAttrs();
@@ -166,7 +183,10 @@ export abstract class Path {
 
       this.svgElement.appendChild(this.defs);
       if (this.options.start.markerId) {
-        this.svgPathLine.setAttribute('marker-start', `url(${this.options.start.markerId})`);
+        this.svgPathLine.setAttribute(
+          'marker-start',
+          `url(${this.options.start.markerId})`,
+        );
       }
       if (this.options.end.markerId) {
         this.svgPathLine.setAttribute('marker-end', `url(${this.options.end.markerId})`);
@@ -178,7 +198,7 @@ export abstract class Path {
    * Set the svg attributes for the positioning and width/height
    */
   setSvgAttrs(): void {
-    const {  top, left, width, height } = this.getSVGProportions();
+    const { top, left, width, height } = this.getSVGProportions();
 
     this.svgElement.style.top = `${top}px`;
     this.svgElement.style.left = `${left}px`;
@@ -192,9 +212,15 @@ export abstract class Path {
    * Sets the div attributes for the positioning and width/height
    */
   setDivAttrs(): void {
-    const width = Math.abs(Math.min(this.startBbox.left, this.endBbox.left) - Math.max(this.endBbox.right, this.startBbox.right));
+    const width = Math.abs(
+      Math.min(this.startBbox.left, this.endBbox.left) -
+        Math.max(this.endBbox.right, this.startBbox.right),
+    );
 
-    const height = Math.abs(Math.min(this.startBbox.top, this.endBbox.top) - Math.max(this.endBbox.bottom, this.startBbox.bottom));
+    const height = Math.abs(
+      Math.min(this.startBbox.top, this.endBbox.top) -
+        Math.max(this.endBbox.bottom, this.startBbox.bottom),
+    );
 
     const top = Math.min(this.startBbox.top, this.endBbox.top);
     const left = Math.min(this.startBbox.left, this.endBbox.left);
@@ -218,7 +244,8 @@ export abstract class Path {
   }
 
   /**
-   * Calculates the SVG width, height, and other key numbers that can then be used to draw the path
+   * Calculates the SVG width, height, and other key numbers that can then be used to
+   * draw the path
    * @returns
    */
   getSVGProportions(): SvgProportions {
@@ -229,7 +256,8 @@ export abstract class Path {
     const x2 = this.endBbox.left + this.options.end.position.offsetX;
 
     return {
-      // Width of the svg - the starting position offset * the size + the ending position offset * size
+      // Width of the svg - the starting position offset * the size + the ending position
+      // offset * size
       width: Math.abs(x1 - x2) + 1,
       height: Math.abs(y1 - y2) + 1,
       start: {
@@ -240,8 +268,10 @@ export abstract class Path {
         x: x2,
         y: y2,
       },
-      top: y1 < y2 ? this.options.start.position.offsetY : this.options.end.position.offsetY,
-      left: x1 < x2 ? this.options.start.position.offsetX : this.options.end.position.offsetX,
+      top:
+        y1 < y2 ? this.options.start.position.offsetY : this.options.end.position.offsetY,
+      left:
+        x1 < x2 ? this.options.start.position.offsetX : this.options.end.position.offsetX,
     };
   }
 
@@ -268,7 +298,8 @@ export abstract class Path {
   abstract getPath(): string;
 
   /**
-   * This function is supposed to take points as input and output them as a string that will be set to the `d` attribute of `<path>`.
+   * This function is supposed to take points as input and output them as a string that
+   * will be set to the `d` attribute of `<path>`.
    * @param points: Point[]; Array of points that you want to write to your SVG
    * @returns The path string ready to be added to the `d` attribute.
    */
