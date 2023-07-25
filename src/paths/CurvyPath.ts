@@ -1,9 +1,9 @@
-import { LinePath } from './LinePath';
-import { PathOptions, Point } from './../models';
+import { Path } from './Path';
+import { PathOptions, Point } from '@src/models';
 
-export class CurvyPath extends LinePath {
-  constructor(options: PathOptions, debug = false) {
-    super(options, debug);
+export class CurvyPath extends Path {
+  constructor(options: PathOptions) {
+    super(options);
   }
 
   /**
@@ -26,7 +26,10 @@ export class CurvyPath extends LinePath {
 
       ...[
         { x: Math.abs(startX - (startX + endX) * 0.5), y: startY },
-        { x: Math.abs(startX - (startX + endX) * 0.5), y: Math.abs(startY - (startY + endY) * 0.5) }, // center
+        {
+          x: Math.abs(startX - (startX + endX) * 0.5),
+          y: Math.abs(startY - (startY + endY) * 0.5),
+        }, // center
         { x: Math.abs(startX - (startX + endX) * 0.5), y: endY },
       ],
 

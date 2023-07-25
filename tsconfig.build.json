@@ -1,13 +1,9 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "declaration": true,
-      "emitDeclarationOnly": true,
-      "outDir": "dist/types"
-    },
-    "exclude": [
-        "./src/app.ts",
-        "./tests/*",
-        "playwright.config.ts"
-    ]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist/types"
+  },
+  "exclude": ["./example/app.ts", "./tests/*", "playwright.config.ts"]
 }

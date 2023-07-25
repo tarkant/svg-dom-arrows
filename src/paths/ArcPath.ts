@@ -1,11 +1,10 @@
-import { LinePath } from './LinePath';
-import { PathOptions } from './../models/PathOptions';
-import { Point } from './../models/Path';
+import { Path } from './Path';
+import { PathOptions } from '@src/models/PathOptions';
+import { Point } from '@src/models/Path';
 
-export class ArcPath extends LinePath {
-
-  constructor(options: PathOptions, debug = false) {
-    super(options, debug);
+export class ArcPath extends Path {
+  constructor(options: PathOptions) {
+    super(options);
   }
 
   /**
@@ -18,25 +17,26 @@ export class ArcPath extends LinePath {
   getPath(): string {
     const { width, height, start, end } = this.getSVGProportions();
 
-    const startX = start.x > end.x ? width: 0;
+    const startX = start.x > end.x ? width : 0;
     const startY = start.y > end.y ? height : 0;
     const endX = width - startX;
     const endY = height - startY;
 
     const points = [
-      {x: startX, y: startY},
+      { x: startX, y: startY },
 
-      ...(
-        [
-          /**
-           * X * Value = angle outgoing
-           * Y * value = Angle entry
-           **/
-          {x:Math.abs(startX - (startX + endX)*.2), y: Math.abs(startY - (startY + endY)*.6)},
-        ]
-      ),
+      ...[
+        /**
+         * X * Value = angle outgoing
+         * Y * value = Angle entry
+         **/
+        {
+          x: Math.abs(startX - (startX + endX) * 0.2),
+          y: Math.abs(startY - (startY + endY) * 0.6),
+        },
+      ],
 
-      {x: endX, y: endY}
+      { x: endX, y: endY },
     ];
 
     return this.svgPath(points);
@@ -48,5 +48,5 @@ export class ArcPath extends LinePath {
     C ${points[1].x},${points[1].y} ${points[1].x},${points[1].y}
     ${points[2].x},${points[2].y}
     `;
-  };
+  }
 }

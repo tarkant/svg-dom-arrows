@@ -1,10 +1,9 @@
-import { LinePath } from './LinePath';
-import { PathOptions, Point } from './../models';
+import { Path } from './Path';
+import { PathOptions, Point } from '@src/models';
 
-export class SquarePath extends LinePath {
-
-  constructor(options: PathOptions, debug = false) {
-    super(options, debug);
+export class SquarePath extends Path {
+  constructor(options: PathOptions) {
+    super(options);
   }
 
   /**
@@ -17,25 +16,29 @@ export class SquarePath extends LinePath {
   getPath(): string {
     const { width, height, start, end } = this.getSVGProportions();
 
-    const startX = start.x > end.x ? width: 0;
+    const startX = start.x > end.x ? width : 0;
     const startY = start.y > end.y ? height : 0;
     const endX = width - startX;
     const endY = height - startY;
 
     const points = [
-      {x: startX, y: startY},
+      { x: startX, y: startY },
 
-      ...(
-        width > height
-          ? [
-            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
+      ...(width > height
+        ? [
+            {
+              x: Math.abs(startX - (startX + endX) * 0.5),
+              y: Math.abs(startY - (startY + endY) * 0.5),
+            }, // center
           ]
-          : [
-            {x:Math.abs(startX - (startX + endX)*.5), y: Math.abs(startY - (startY + endY)*.5)}, // center
-          ]
-      ),
+        : [
+            {
+              x: Math.abs(startX - (startX + endX) * 0.5),
+              y: Math.abs(startY - (startY + endY) * 0.5),
+            }, // center
+          ]),
 
-      {x: endX, y: endY}
+      { x: endX, y: endY },
     ];
 
     return this.svgPath(points);
@@ -48,5 +51,5 @@ export class SquarePath extends LinePath {
     V ${points[2].y}
     H ${points[2].x}
     `;
-  };
+  }
 }
