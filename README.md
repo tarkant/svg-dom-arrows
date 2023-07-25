@@ -208,6 +208,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.1.4 : Integrated [@JacerOmri](https://github.com/JacerOmri) PR [!34](https://github.com/tarkant/svg-dom-arrows/pull/34)
 - v2.1.3 : Updated .npmignore rules + updated the CI + added github package publish
 - v2.1.2 : Exposed the SVG path, SVG element and div container + general tests fixes
 - v2.1.1 : Fix auto-publish github action
