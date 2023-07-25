@@ -1,6 +1,6 @@
-import { SvgProportions } from '../models/SvgProportions';
-import { SVGNS } from './../consts/Constants';
-import { PathOptions, Point, RenderOutput } from './../models';
+import { SvgProportions } from '@src/models/SvgProportions';
+import { SVGNS } from '@src/consts';
+import { PathOptions, Point, RenderOutput } from '@src/models';
 
 export abstract class Path {
   /**

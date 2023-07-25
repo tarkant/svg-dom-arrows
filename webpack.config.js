@@ -31,6 +31,9 @@ const config = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

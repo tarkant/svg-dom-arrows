@@ -1,6 +1,6 @@
 import { Path } from './Path';
-import { PathOptions } from './../models/PathOptions';
-import { Point } from './../models/Path';
+import { PathOptions } from '@src/models/PathOptions';
+import { Point } from '@src/models/Path';
 
 export class ArcPath extends Path {
   constructor(options: PathOptions) {

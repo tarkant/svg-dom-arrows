@@ -1,4 +1,4 @@
-import { Point } from './../models';
+import { Point } from '@src/models';
 import { Path } from './Path';
 
 export class LinePath extends Path {
