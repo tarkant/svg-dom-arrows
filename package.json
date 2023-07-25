@@ -1,6 +1,6 @@
 {
   "name": "svg-dom-arrows",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Draw an SVG arrow between two DOM elements",
   "keywords": [
     "arrow",
