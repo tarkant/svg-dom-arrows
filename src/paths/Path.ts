@@ -14,7 +14,7 @@ export abstract class Path {
   protected svgPathLine: SVGPathElement;
 
   /**
-   * The div that will contain the svg, this is positionned in absolute relatively to the
+   * The div that will contain the svg, this is positioned in absolute relatively to the
    * DOM element `appendTo`,
    * This helps us position the SVG inside the div in absolute too.
    */
@@ -61,7 +61,7 @@ export abstract class Path {
     }
 
     /**
-     * Offsets play a big role in knowing from where the path will effectivley start and
+     * Offsets play a big role in knowing from where the path will effectively start and
      * end,
      * To make things easier for other classes extending this base, we calculate all this
      * to reduce complexity.
@@ -90,7 +90,7 @@ export abstract class Path {
   /**
    * If you want your path to adapt to the DOM changes,
    * you'll have to call this function, it will recalculate
-   * the path and reappend it if needed.
+   * the path and re-append it if needed.
    * @returns: RenderOutput; Calling this will return the new rendered container,
    * svg, path and defs.
    * It might be useful for you to avoid dealing with async stuff for example.
@@ -136,14 +136,22 @@ export abstract class Path {
   }
 
   /**
+   * @deprecated: this method is renamed to `redraw()`
    * Recalculates the positions of the div container, the svg element and the svg path
    */
   public recalculate(): void {
+    this.redraw();
+  }
+
+  /**
+   * Redraws the SVG path by recalculating the positions of the div container
+   */
+  public redraw(): void {
     this.startBbox = this.options.start.element.getBoundingClientRect();
     this.endBbox = this.options.end.element.getBoundingClientRect();
 
     /**
-     * Offsets play a big role in knowing from where the path will effectivley start and
+     * Offsets play a big role in knowing from where the path will effectively start and
      * end,
      * To make things easier for other classes extending this base, we calculate all this
      * to reduce complexity.

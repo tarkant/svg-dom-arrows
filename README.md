@@ -28,11 +28,11 @@ Simple implementation:
     // Output
 
     arrow = {
-        conainerDiv: HTMLDivElement,// The generated div containing the SVG element
+        containerDiv: HTMLDivElement,// The generated div containing the SVG element
         startBbox: DOMRect, // Internal object used by the class to calculate the arrow path
         endBbox: DOMRect, // Internal object used by the class to calculate the arrow path
         options: PathOptions, // The options object passed
-        svgElement: SVGSVGElement, // The generated SVG element conaining the path
+        svgElement: SVGSVGElement, // The generated SVG element containing the path
         svgPathLine: SVGPathElement, // The generated path
     };
 ```
@@ -56,7 +56,7 @@ You can checkout some demos here with few libs and frameworks so you can get you
 
 ### Positioning ➕
 
-Positioning is based on a left and top axis, below a simple visualization of how the axies are based on the element. 0 is at the left of the element, 1 would be at 100% left from the origin.
+Positioning is based on a left and top axis, below a simple visualization of how the axes are based on the element. 0 is at the left of the element, 1 would be at 100% left from the origin.
 
 ![positioning-axis-guide](https://github.com/tarkant/svg-dom-arrows/blob/master/images/positioning-guide.svg)
 
@@ -166,7 +166,7 @@ const line = new LinePath({
 }, true);
 ```
 
-Below the result with an arrow going from the starting to ending divs with an arrow marker:
+Below the result with an arrow going from the starting to ending DIVs with an arrow marker:
 
 ![line-path-example-w-markers](https://github.com/tarkant/svg-dom-arrows/blob/master/images/line-path-example-w-markers.png)
 
@@ -208,6 +208,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.1.5 : Deprecated the method `recalculate()` and renamed it to `redraw()` suggested by [@calumk](https://github.com/calumk) in [#35](https://github.com/tarkant/svg-dom-arrows/issues/35)
 - v2.1.4 : Integrated [@JacerOmri](https://github.com/JacerOmri) PR [!34](https://github.com/tarkant/svg-dom-arrows/pull/34)
 - v2.1.3 : Updated .npmignore rules + updated the CI + added github package publish
 - v2.1.2 : Exposed the SVG path, SVG element and div container + general tests fixes

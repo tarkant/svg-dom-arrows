@@ -79,6 +79,6 @@ cases.map((item, idx) => {
 console.log(arrows);
 
 /**
- * Example to recalclate paths on every window.onresize event
+ * Example to redraw paths on every window.onresize event
  */
-window.onresize = () => arrows.map((el) => el.recalculate());
+window.onresize = () => arrows.map((el) => el.redraw());
