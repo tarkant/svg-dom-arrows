@@ -2,7 +2,7 @@
  jobs:
   build:
     docker:
-      - image: mcr.microsoft.com/playwright:v1.36.1-focal
+      - image: mcr.microsoft.com/playwright:v1.39.0-focal
     steps:
       - checkout
       - run: npm i -D @playwright/test
