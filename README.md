@@ -208,6 +208,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.1.6 : Apply security fixes for npm packages
 - v2.1.5 : Deprecated the method `recalculate()` and renamed it to `redraw()` suggested by [@calumk](https://github.com/calumk) in [#35](https://github.com/tarkant/svg-dom-arrows/issues/35)
 - v2.1.4 : Integrated [@JacerOmri](https://github.com/JacerOmri) PR [!34](https://github.com/tarkant/svg-dom-arrows/pull/34)
 - v2.1.3 : Updated .npmignore rules + updated the CI + added github package publish
