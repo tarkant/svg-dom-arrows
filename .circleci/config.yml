@@ -2,11 +2,11 @@
  jobs:
   build:
     docker:
-      - image: mcr.microsoft.com/playwright:v1.39.0-focal
+      - image: mcr.microsoft.com/playwright
     steps:
       - checkout
       - run: npm i -D @playwright/test
       - run: npx playwright install chrome
       - run:
           name: "Run visual tests"
-          command: npm test 
+          command: npm test
