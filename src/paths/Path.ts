@@ -45,7 +45,7 @@ export abstract class Path {
   /**
    * The PathOptions supplied to our class when creating a new instance are stored here.
    */
-  protected options: PathOptions;
+  public options: PathOptions;
 
   constructor(options: PathOptions) {
     this.options = Object.assign(options);
