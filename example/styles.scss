@@ -4,6 +4,22 @@ body {
     background-color: #333;
 }
 
+.green {
+    background-color: #BADA55;
+}
+
+.gray {
+    background-color: #888;
+}
+
+.box {
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    position: absolute;
+    opacity: .5;
+}
+
 #app {
     position: relative;
     display: flex;
@@ -31,13 +47,6 @@ body {
 }
 
 .case-1 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 4rem;
@@ -49,22 +58,8 @@ body {
         left: 10rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-2 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 2rem;
@@ -76,22 +71,8 @@ body {
         left: 4rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-3 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 16rem;
@@ -103,22 +84,8 @@ body {
         left: 15rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-4 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 14rem;
@@ -130,22 +97,8 @@ body {
         left: 2rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-5 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         width: 8rem;
@@ -160,22 +113,8 @@ body {
         left: 16rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-6 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 4rem;
@@ -190,22 +129,8 @@ body {
         left: 14rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-7 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 14rem;
@@ -220,22 +145,8 @@ body {
         left: 4rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-8 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         width: 8rem;
@@ -250,22 +161,8 @@ body {
         left: 2rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-9 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         width: 4rem;
@@ -280,22 +177,8 @@ body {
         left: 14rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 .case-10 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .start {
         top: 4rem;
@@ -310,23 +193,9 @@ body {
         left: 14rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 
 .case-11 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .end {
         top: 8rem;
@@ -337,23 +206,9 @@ body {
         left: 4rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 
 .case-12 {
-    .box {
-        width: 4rem;
-        height: 4rem;
-        display: block;
-        position: absolute;
-        opacity: .5;
-    }
 
     .end {
         top: 8rem;
@@ -364,15 +219,33 @@ body {
         left: 4rem;
     }
 
-    .green {
-        background-color: #BADA55;
-    }
-
-    .gray {
-        background-color: #888;
-    }
 }
 
 .debug {
     border: solid 1px red;
+}
+
+.main-box {
+    position: absolute;
+}
+
+.readme-example {
+    .main-box, [class*=box-] {
+        z-index: 9;
+        padding: 1rem 2rem;
+        cursor: move;
+        position: absolute;
+    }
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+    a {
+        color: white;
+        font-size: 1.5rem;
+    }
 }
