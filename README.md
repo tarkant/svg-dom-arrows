@@ -2,7 +2,7 @@
 
 Draw an arrow from one HTML element to another with a simple API and 0 dependencies.
 
-![svg-dom-arrows-drag-n-drop-demo](https://github.com/tarkant/svg-dom-arrows/blob/master/images/svg-dom-arrows-drag-n-drop-demo.png)
+![svg-dom-arrows-drag-n-drop-demo](https://github.com/tarkant/svg-dom-arrows/blob/master/images/svg-dom-arrows-drag-n-drop-demo.gif)
 
 ## How to get started? ✨
 
@@ -210,7 +210,8 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
-- v2.2.0 : Fixed build issue with webpack
+- v2.2.2 : Fixed the readme example gif
+- v2.2.1 : Fixed build issue with webpack
 - v2.2.0 : Add example page and expose the options property in Path.ts for ease of use
 - v2.1.6 : Apply security fixes for npm packages
 - v2.1.5 : Deprecated the method `recalculate()` and renamed it to `redraw()` suggested by [@calumk](https://github.com/calumk) in [#35](https://github.com/tarkant/svg-dom-arrows/issues/35)
