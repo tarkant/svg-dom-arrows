@@ -7,6 +7,7 @@ const config = {
   context: __dirname,
   entry: {
     app: './example/app.ts',
+    readme: './example/readme.ts',
   },
   output: {
     filename: '[name].js',
@@ -37,7 +38,14 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'example/index.html',
+      template: './example/index.html',
+      filename: 'index.html',
+      chunks: ['app'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './example/readme-example.html',
+      filename: 'readme-example.html',
+      chunks: ['readme'],
     }),
   ],
   devServer: {
