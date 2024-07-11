@@ -2,6 +2,8 @@
 
 Draw an arrow from one HTML element to another with a simple API and 0 dependencies.
 
+![svg-dom-arrows-drag-n-drop-demo](https://github.com/tarkant/svg-dom-arrows/blob/master/images/svg-dom-arrows-drag-n-drop-demo.png)
+
 ## How to get started? ✨
 
 To get started, you'll need 3 things:
