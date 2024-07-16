@@ -210,6 +210,7 @@ If you have an issue with this library or want to contribute, please let me know
 
 ## ⏲ Changelog
 
+- v2.2.3 : Fixed an issue with the TS types not being built, thanks to [@unitythemaker](https://github.com/unitythemaker) in [#47](https://github.com/tarkant/svg-dom-arrows/issues/47) for his report 👌 .
 - v2.2.2 : Fixed the readme example gif
 - v2.2.1 : Fixed build issue with webpack
 - v2.2.0 : Add example page and expose the options property in Path.ts for ease of use
