@@ -50,12 +50,6 @@ features.forEach((item) => {
   );
 });
 
-
-arrows.forEach(el => {
-  dragElement(el.options.start.element as HTMLElement, el);
-})
-
-
 /**
  * Moves the draggable element to the new cursor position.
  * Code slightly adapted from :
@@ -104,5 +98,11 @@ const dragElement = (element: HTMLElement, item: CurvyPath): void => {
 
   element.onmousedown = dragMouseDown;
 }
+
+
+arrows.forEach(el => {
+  dragElement(el.options.start.element as HTMLElement, el);
+})
+
 
 window.onresize = () => arrows.forEach((el) => el.redraw());
