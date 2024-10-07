@@ -104,5 +104,4 @@ arrows.forEach(el => {
   dragElement(el.options.start.element as HTMLElement, el);
 })
 
-
 window.onresize = () => arrows.forEach((el) => el.redraw());
