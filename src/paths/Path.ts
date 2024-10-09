@@ -75,6 +75,9 @@ export abstract class Path {
     this.options.end.position.offsetY =
       this.options.end.position.top * this.endBbox.height;
 
+      console.warn((this.options.end.position.left + 1) * this.endBbox.width)
+      console.warn(this.options.end.position.left , this.endBbox.width)
+
     if (options.svgPath) {
       this.svgPath = options.svgPath;
     }
@@ -262,6 +265,15 @@ export abstract class Path {
 
     const x1 = this.startBbox.left + this.options.start.position.offsetX;
     const x2 = this.endBbox.left + this.options.end.position.offsetX;
+
+    console.log({
+      y1,
+      y2,
+      x1,
+      x2,
+      startOffsetX: this.options.start.position.offsetX,
+      endOffsetX: this.options.end.position.offsetX,
+    });
 
     return {
       // Width of the svg - the starting position offset * the size + the ending position

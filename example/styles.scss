@@ -1,251 +1,242 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: #333;
 }
 
 .green {
-    background-color: #BADA55;
+  background-color: #bada55;
 }
 
 .gray {
-    background-color: #888;
+  background-color: #888;
 }
 
 .box {
-    width: 4rem;
-    height: 4rem;
-    display: block;
-    position: absolute;
-    opacity: .5;
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  position: absolute;
+  opacity: 0.5;
 }
 
 #app {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .block {
-    display: flex;
-    width: 20rem;
-    height: 20rem;
-    position: relative;
-    border: solid 2px white;
-    margin: 2rem;
-    padding: 2rem;
+  display: flex;
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  border: solid 2px white;
+  margin: 2rem;
+  padding: 2rem;
 }
 
 .start {
-    border-top-left-radius: 1rem;
+  border-top-left-radius: 1rem;
 }
 
 .end {
-    border-top-left-radius: 1rem;
+  border-top-left-radius: 1rem;
 }
 
 .case-1 {
+  .start {
+    top: 4rem;
+    left: 2rem;
+  }
 
-    .start {
-        top: 4rem;
-        left: 2rem;
-    }
-
-    .end {
-        top: 16rem;
-        left: 10rem;
-    }
-
+  .end {
+    top: 16rem;
+    left: 10rem;
+  }
 }
 .case-2 {
+  .start {
+    top: 2rem;
+    left: 18rem;
+  }
 
-    .start {
-        top: 2rem;
-        left: 18rem;
-    }
-
-    .end {
-        top: 16rem;
-        left: 4rem;
-    }
-
+  .end {
+    top: 16rem;
+    left: 4rem;
+  }
 }
 .case-3 {
+  .start {
+    top: 16rem;
+    left: 3rem;
+  }
 
-    .start {
-        top: 16rem;
-        left: 3rem;
-    }
-
-    .end {
-        top: 2rem;
-        left: 15rem;
-    }
-
+  .end {
+    top: 2rem;
+    left: 15rem;
+  }
 }
 .case-4 {
+  .start {
+    top: 14rem;
+    left: 18rem;
+  }
 
-    .start {
-        top: 14rem;
-        left: 18rem;
-    }
-
-    .end {
-        top: 2rem;
-        left: 2rem;
-    }
-
+  .end {
+    top: 2rem;
+    left: 2rem;
+  }
 }
 .case-5 {
+  .start {
+    width: 8rem;
+    height: 4rem;
 
-    .start {
-        width: 8rem;
-        height: 4rem;
+    top: 4rem;
+    left: 2rem;
+  }
 
-        top: 4rem;
-        left: 2rem;
-    }
-
-    .end {
-        top: 16rem;
-        left: 16rem;
-    }
-
+  .end {
+    top: 16rem;
+    left: 16rem;
+  }
 }
 .case-6 {
+  .start {
+    top: 4rem;
+    left: 2rem;
+  }
 
-    .start {
-        top: 4rem;
-        left: 2rem;
-    }
+  .end {
+    width: 8rem;
+    height: 4rem;
 
-    .end {
-        width: 8rem;
-        height: 4rem;
-
-        top: 16rem;
-        left: 14rem;
-    }
-
+    top: 16rem;
+    left: 14rem;
+  }
 }
 .case-7 {
+  .start {
+    top: 14rem;
+    left: 16rem;
+  }
 
-    .start {
-        top: 14rem;
-        left: 16rem;
-    }
+  .end {
+    width: 8rem;
+    height: 4rem;
 
-    .end {
-        width: 8rem;
-        height: 4rem;
-
-        top: 4rem;
-        left: 4rem;
-    }
-
+    top: 4rem;
+    left: 4rem;
+  }
 }
 .case-8 {
+  .start {
+    width: 8rem;
+    height: 4rem;
 
-    .start {
-        width: 8rem;
-        height: 4rem;
+    top: 14rem;
+    left: 12rem;
+  }
 
-        top: 14rem;
-        left: 12rem;
-    }
-
-    .end {
-        top: 4rem;
-        left: 2rem;
-    }
-
+  .end {
+    top: 4rem;
+    left: 2rem;
+  }
 }
 .case-9 {
+  .start {
+    width: 4rem;
+    height: 8rem;
 
-    .start {
-        width: 4rem;
-        height: 8rem;
+    top: 4rem;
+    left: 2rem;
+  }
 
-        top: 4rem;
-        left: 2rem;
-    }
-
-    .end {
-        top: 16rem;
-        left: 14rem;
-    }
-
+  .end {
+    top: 16rem;
+    left: 14rem;
+  }
 }
 .case-10 {
+  .start {
+    top: 4rem;
+    left: 2rem;
+  }
 
-    .start {
-        top: 4rem;
-        left: 2rem;
-    }
+  .end {
+    width: 4rem;
+    height: 8rem;
 
-    .end {
-        width: 4rem;
-        height: 8rem;
-
-        top: 14rem;
-        left: 14rem;
-    }
-
+    top: 14rem;
+    left: 14rem;
+  }
 }
 
 .case-11 {
-
-    .end {
-        top: 8rem;
-        left: 14rem;
-    }
-    .start {
-        top: 8rem;
-        left: 4rem;
-    }
-
+  .end {
+    top: 8rem;
+    left: 14rem;
+  }
+  .start {
+    top: 8rem;
+    left: 4rem;
+  }
 }
 
 .case-12 {
+  .end {
+    top: 8rem;
+    left: 14rem;
+  }
+  .start {
+    top: 4rem;
+    left: 4rem;
+  }
+}
 
-    .end {
-        top: 8rem;
-        left: 14rem;
-    }
-    .start {
-        top: 4rem;
-        left: 4rem;
-    }
+.case-52 {
+  .start {
+    background-color: #bada55;
+    top: 0px;
+    left: 0px;
+  }
 
+  .end {
+    background-color: #888;
+    top: 120px;
+    left: 4rem;
+  }
 }
 
 .debug {
-    border: solid 1px red;
+  border: solid 1px red;
 }
 
 .main-box {
-    position: absolute;
+  position: absolute;
 }
 
 .readme-example {
-    .main-box, [class*=box-] {
-        z-index: 9;
-        padding: 1rem 2rem;
-        cursor: move;
-        position: absolute;
-    }
+  .main-box,
+  [class*='box-'] {
+    z-index: 9;
+    padding: 1rem 2rem;
+    cursor: move;
+    position: absolute;
+  }
 }
 
 .navigation {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    margin: 2rem 0;
-    a {
-        color: white;
-        font-size: 1.5rem;
-    }
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin: 2rem 0;
+  a {
+    color: white;
+    font-size: 1.5rem;
+  }
 }

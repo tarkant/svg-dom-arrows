@@ -4,7 +4,7 @@ import { createMarker } from './CreateMarker';
 import './styles.scss';
 
 const cases = [
-  'case-1',
+  /*'case-1',
   'case-2',
   'case-3',
   'case-4',
@@ -15,7 +15,8 @@ const cases = [
   'case-9',
   'case-10',
   'case-11',
-  'case-12',
+  'case-12',*/
+  'case-52',
 ];
 
 const arrows: Path[] = [];
@@ -38,7 +39,7 @@ cases.map((item, idx) => {
         element: e,
         position: {
           top: 0.5,
-          left: 0,
+          left: 0.1,
         },
         markerId: '#marker1',
       },
@@ -50,11 +51,12 @@ cases.map((item, idx) => {
         svgPath: `path-${idx} baz`,
         svgElement: `element-${idx}`,
       },
+      debug: true,
     }),
   );
 });
 
-console.log(arrows);
+console.log(arrows[12]);
 
 /**
  * Example to redraw paths on every window.onresize event
